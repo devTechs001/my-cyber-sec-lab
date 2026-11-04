@@ -96,9 +96,9 @@ export default function Dashboard() {
       {/* QUICK LAUNCH */}
       <SectionHeading eyebrow="Launch" title="Everything, one click away" />
       <div className="card-grid">
-        {quickLinks.map((q) => (
-          <Link to={q.to} className="card card-link" key={q.to}>
-            <div className="card-icon">{q.icon}</div>
+        {quickLinks.map((q, i) => (
+          <Link to={q.to} className="card card-link pop" style={{ animationDelay: `${i * 50}ms` }} key={q.to}>
+            <div className="card-icon"><Icon name={q.icon} size={26} /></div>
             <h3>{q.title}</h3>
             <p>{q.desc}</p>
           </Link>

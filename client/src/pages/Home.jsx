@@ -42,13 +42,13 @@ export default function Home() {
             Nmap, Burp Suite, Wireshark and Metasploit, networking docs and a 24-week roadmap —
             everything you need for a job-ready security portfolio.
           </p>
-          <div className="hero-cta">
-            <Link to="/dashboard" className="btn btn-primary">📊 Open Dashboard</Link>
-            <Link to="/lessons" className="btn btn-ghost">Start Lesson 1 →</Link>
-            <Link to="/terminal" className="btn btn-ghost">🖥️ Lab Terminal</Link>
-            <Link to="/lab-setup" className="btn btn-ghost">Build a Virtual Lab</Link>
+          <div className="hero-cta fade-up d3">
+            <Link to="/dashboard" className="btn btn-primary"><Icon name="dashboard" size={16} /> Open Dashboard</Link>
+            <Link to="/lessons" className="btn btn-ghost"><Icon name="book" size={16} /> Start Lesson 1 →</Link>
+            <Link to="/terminal" className="btn btn-ghost"><Icon name="terminal" size={16} /> Lab Terminal</Link>
+            <Link to="/lab-setup" className="btn btn-ghost"><Icon name="server" size={16} /> Virtual Lab</Link>
           </div>
-          <div className="hero-status">
+          <div className="hero-status fade-up d4">
             <span className={`dot ${health?.status === "ok" ? "dot-ok" : "dot-warn"}`} />
             API status: {health ? health.status : "connecting…"} {health?.time && `· ${health.time}`}
           </div>
