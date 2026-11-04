@@ -42,8 +42,9 @@ export default function Home() {
             everything you need for a job-ready security portfolio.
           </p>
           <div className="hero-cta">
-            <Link to="/lessons" className="btn btn-primary">Start Lesson 1 →</Link>
-            <Link to="/terminal" className="btn btn-ghost">🖥️ Open the Lab Terminal</Link>
+            <Link to="/dashboard" className="btn btn-primary">📊 Open Dashboard</Link>
+            <Link to="/lessons" className="btn btn-ghost">Start Lesson 1 →</Link>
+            <Link to="/terminal" className="btn btn-ghost">🖥️ Lab Terminal</Link>
             <Link to="/lab-setup" className="btn btn-ghost">Build a Virtual Lab</Link>
           </div>
           <div className="hero-status">

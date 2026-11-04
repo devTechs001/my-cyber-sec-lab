@@ -30,6 +30,7 @@ export const api = {
   roadmap: () => get("/roadmap"),
   labSetup: () => get("/labsetup"),
   resources: () => get("/resources"),
+  dashboard: () => get("/dashboard"),
   progress: () => get("/progress"),
   setProgress: (id, done) => post(`/progress/${id}`, { done }),
 };

@@ -44,6 +44,26 @@ cd client && npm install && npm run dev
 
 Open http://localhost:5173 — the hero shows live `API status: ok` from the backend.
 
+## 📊 Dashboard (`/dashboard`)
+Command center for the whole lab: stat cards (lesson/lab progress with % bars),
+"next up" lesson & lab, a one-click launch grid (Terminal, Virtual Lab, Labs, Lessons,
+Tools, Resources, Networking, Roadmap), interactive checklists that persist server-side
+(`server/data/progress.json`, gitignored), and a recent-activity feed.
+
+## 🖥️ In-browser terminal (`/terminal`)
+Practice safely in a **simulated Kali shell** — nothing real executes:
+```
+help → ls /lab → cat README.txt → ping 192.168.56.101 → nmap -sV 192.168.56.101
+→ msfconsole → search vsftpd → use exploit/unix/ftp/vsftpd_234_backdoor
+→ set RHOSTS 192.168.56.101 → exploit
+```
+
+## 🏗️ Real virtual lab (`/lab-setup` + `/resources`)
+Step-by-step guide to build an isolated lab: VirtualBox host-only network
+`192.168.56.0/24`, **Kali Linux** attack box, **Metasploitable2/DVWA** vulnerable
+targets, snapshots, strict isolation rules. `/resources` lists 25 official links
+(Kali, VulnHub, TryHackMe, HackTheBox, PortSwigger Academy, certs, bug bounty).
+
 ## 🧪 Python labs
 
 ```bash
