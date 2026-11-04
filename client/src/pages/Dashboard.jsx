@@ -2,16 +2,17 @@ import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../api.js";
 import SectionHeading from "../components/SectionHeading.jsx";
+import Icon from "../components/Icon.jsx";
 
 const quickLinks = [
-  { to: "/terminal", icon: "🖥️", title: "Lab Terminal", desc: "Simulated Kali shell — practice nmap & msfconsole in-browser" },
-  { to: "/lab-setup", icon: "🏗️", title: "Virtual Lab", desc: "Build a real isolated lab: Kali + Metasploitable + DVWA" },
-  { to: "/labs", icon: "🧪", title: "Hands-on Labs", desc: "8 dedicated attack scenarios with steps & deliverables" },
-  { to: "/lessons", icon: "🎓", title: "Lessons", desc: "12 modules from networking to reporting" },
-  { to: "/tools", icon: "🧰", title: "Tools", desc: "Nmap, Burp, Wireshark, Metasploit & more" },
-  { to: "/resources", icon: "🔗", title: "Resources", desc: "Official downloads, platforms, certs & bug bounty" },
-  { to: "/networking", icon: "🌐", title: "Networking", desc: "OSI, ports, subnetting, hardening checklist" },
-  { to: "/roadmap", icon: "🗺️", title: "Roadmap", desc: "24-week plan to job-ready" },
+  { to: "/terminal", icon: "terminal", title: "Lab Terminal", desc: "Simulated Kali shell — practice nmap & msfconsole in-browser" },
+  { to: "/lab-setup", icon: "server", title: "Virtual Lab", desc: "Build a real isolated lab: Kali + Metasploitable + DVWA" },
+  { to: "/labs", icon: "flask", title: "Hands-on Labs", desc: "8 dedicated attack scenarios with steps & deliverables" },
+  { to: "/lessons", icon: "book", title: "Lessons", desc: "12 modules from networking to reporting" },
+  { to: "/tools", icon: "tools", title: "Tools", desc: "Nmap, Burp, Wireshark, Metasploit & more" },
+  { to: "/resources", icon: "link", title: "Resources", desc: "Official downloads, platforms, certs & bug bounty" },
+  { to: "/networking", icon: "globe", title: "Networking", desc: "OSI, ports, subnetting, hardening checklist" },
+  { to: "/roadmap", icon: "map", title: "Roadmap", desc: "24-week plan to job-ready" },
 ];
 
 export default function Dashboard() {

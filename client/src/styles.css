@@ -51,12 +51,15 @@ h3 { font-size: 1.1rem; }
 .brand { display: flex; align-items: center; gap: 0.5rem; font-size: 1.25rem; font-weight: 700; color: var(--text); }
 .brand:hover { text-decoration: none; }
 .brand b { color: var(--green); }
-.brand-glyph { color: var(--green); font-size: 1.5rem; text-shadow: 0 0 12px rgba(52, 245, 165, 0.8); }
-.nav-links { display: flex; gap: 0.25rem; flex-wrap: wrap; }
+.brand-glyph { color: var(--green); display: inline-flex; }
+.nav-links { display: flex; gap: 0.15rem; flex-wrap: wrap; }
 .nav-link {
-  color: var(--muted); padding: 0.45rem 0.85rem; border-radius: 8px;
-  font-size: 0.95rem; font-weight: 500;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  color: var(--muted); padding: 0.45rem 0.7rem; border-radius: 8px;
+  font-size: 0.9rem; font-weight: 500;
+  transition: color 0.15s ease, background 0.15s ease, transform 0.15s ease;
 }
+.nav-link:hover { transform: translateY(-1px); }
 .nav-link:hover { color: var(--text); text-decoration: none; background: var(--panel); }
 .nav-link.active { color: var(--green); background: rgba(52, 245, 165, 0.08); }
 

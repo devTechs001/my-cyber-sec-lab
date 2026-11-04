@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../api.js";
 import SectionHeading from "../components/SectionHeading.jsx";
+import Icon from "../components/Icon.jsx";
 
 const highlights = [
   { icon: "🎓", title: "12 Lessons", text: "From networking fundamentals to building your own virtual attack lab — structured learning path." },
@@ -93,7 +94,7 @@ export default function Home() {
       {/* ETHICS BANNER */}
       <section className="section">
         <div className="ethics-banner">
-          <h3>⚖️ Rules of engagement</h3>
+          <h3><Icon name="shield" size={20} /> Rules of engagement</h3>
           <p>
             Everything here runs against <strong>your own virtual lab</strong> or authorized platforms
             (DVWA, Metasploitable, TryHackMe, HackTheBox). Unauthorized access to computer systems is a
