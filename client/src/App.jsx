@@ -9,6 +9,10 @@ import LabDetail from "./pages/LabDetail.jsx";
 import Tools from "./pages/Tools.jsx";
 import Networking from "./pages/Networking.jsx";
 import Roadmap from "./pages/Roadmap.jsx";
+import Terminal from "./pages/Terminal.jsx";
+import LabSetup from "./pages/LabSetup.jsx";
+import Resources from "./pages/Resources.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
 export default function App() {
   return (
