@@ -128,4 +128,23 @@ export const labs = [
     deliverable: "Complete report + flags + a portfolio write-up page for your site.",
     safety: "Use only official CTF platforms or your own lab. Never attack real systems.",
   },
+  {
+    id: "lab-08-terminal-warmup",
+    title: "Lab 08 — Web Terminal Warm-Up (in-browser)",
+    difficulty: "Beginner",
+    tools: ["Cyber EC Lab web terminal (/terminal)"],
+    target: "The simulated Kali shell in your browser — zero risk, instant feedback",
+    objective: "Get comfortable with Linux basics and tool syntax before touching a real VM.",
+    steps: [
+      "Open the Terminal page and type: help",
+      "Explore the filesystem: ls, cd /lab, cat README.txt, cat metasploitable.txt",
+      "Check the system: whoami, id, uname -a, ip addr",
+      "Ping the lab targets: ping 192.168.56.101",
+      "Run a simulated scan: nmap -sV 192.168.56.101 — read every service/version",
+      "Enter msfconsole, then: search vsftpd → use exploit/unix/ftp/vsftpd_234_backdoor → set RHOSTS 192.168.56.101 → exploit",
+      "Exit with: exit — then rebuild the same lab for real on VMs (Lab Setup page)",
+    ],
+    deliverable: "Screenshot of your terminal session showing the successful simulated exploit.",
+    safety: "The web terminal is a pure simulation — nothing real executes. Real attacks belong only in your isolated VM lab.",
+  },
 ];

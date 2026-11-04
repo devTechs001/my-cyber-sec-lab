@@ -369,4 +369,38 @@ export const lessons = [
     ],
     resources: ["docs/report-template.md", "docs/processes.md"],
   },
+  {
+    id: "virtual-lab-setup",
+    order: 12,
+    title: "Build Your Virtual Attack Lab",
+    level: "Beginner",
+    duration: "2-3 hrs",
+    icon: "🖥️",
+    summary: "Set up Kali Linux (the perfect pentest OS) plus vulnerable VMs (Metasploitable, DVWA) on an isolated host-only network — the foundation for every hands-on lab.",
+    objectives: [
+      "Install VirtualBox and create a host-only network (192.168.56.0/24)",
+      "Deploy Kali Linux as the attack box",
+      "Deploy Metasploitable2 and DVWA as vulnerable targets",
+      "Snapshot VMs and keep them permanently isolated from the internet",
+    ],
+    walkthrough: [
+      "Import the prebuilt Kali VM (kali.org) — 10-minute setup, change default creds.",
+      "Create vboxnet0 host-only adapter; attach Kali + targets to it (never NAT/bridged for vulnerable VMs).",
+      "Verify: ip addr shows 192.168.56.x, ping the targets, nmap -sV 192.168.56.101.",
+      "Take a 'clean' snapshot of every VM before you attack anything.",
+    ],
+    labCommands: [
+      "ip addr show                          # confirm lab IP 192.168.56.x",
+      "ping -c 3 192.168.56.101              # target reachable?",
+      "nmap -sV 192.168.56.101               # enumerate the vulnerable VM",
+      "docker run --rm -p 80:80 vulnerables/web-dvwa   # local DVWA web target",
+      "# GUI: VirtualBox → VM → Snapshots → Take  ('clean' baseline)",
+    ],
+    check: [
+      "Why must vulnerable VMs use a host-only adapter, never NAT or bridged?",
+      "Why take a snapshot before attacking?",
+      "Which two VMs does this lab recommend as first targets?",
+    ],
+    resources: ["docs/processes.md"],
+  },
 ];

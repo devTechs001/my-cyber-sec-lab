@@ -14,9 +14,10 @@ job-ready portfolio site deployable to **Netlify** (frontend) and **Render** (AP
 ```
 my-cyber-sec-lab/
 ├── client/                 # React (Vite) frontend — modern dark UI
-│   └── src/pages/          # Home, Lessons, Labs, Tools, Networking, Roadmap
-├── server/                 # Express API (Node) — lessons/labs/tools/networking/progress
-│   └── data/               # lesson, lab, tool and networking content (JSON modules)
+│   ├── src/pages/          # Home, Lessons, Labs, Terminal, LabSetup, Tools, Resources, Networking, Roadmap
+│   └── src/terminal/       # simulated Kali shell engine (in-browser, zero-risk practice)
+├── server/                 # Express API (Node) — lessons/labs/tools/networking/roadmap/resources/labsetup/progress
+│   └── data/               # content as JSON modules
 ├── python/labs/            # Educational Python scripts (stdlib only)
 │   ├── port_scanner.py     #   lab-only TCP port scanner
 │   ├── hash_lab.py         #   hashing/salt/PBKDF2 demo (own hashes only)

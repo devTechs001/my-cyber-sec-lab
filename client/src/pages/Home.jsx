@@ -4,8 +4,11 @@ import { api } from "../api.js";
 import SectionHeading from "../components/SectionHeading.jsx";
 
 const highlights = [
-  { icon: "🎓", title: "11 Lessons", text: "From networking fundamentals to responsible disclosure — structured learning path." },
-  { icon: "🧪", title: "7 Hands-on Labs", text: "Dedicated practice environments: DVWA, Metasploitable, Wireshark pcaps, privesc VMs." },
+  { icon: "🎓", title: "12 Lessons", text: "From networking fundamentals to building your own virtual attack lab — structured learning path." },
+  { icon: "🧪", title: "8 Hands-on Labs", text: "Web terminal warm-up, DVWA, Metasploitable, Wireshark pcaps, privesc VMs and more." },
+  { icon: "🖥️", title: "Live Web Terminal", text: "Practice Linux + nmap + Metasploit syntax right in your browser — safe simulation." },
+  { icon: "🖥️", title: "Virtual Lab Guide", text: "Kali attack box + vulnerable VMs (Metasploitable, DVWA) on an isolated host-only network." },
+  { icon: "🔗", title: "Real Resources", text: "Official links: Kali, VulnHub, TryHackMe, HackTheBox, PortSwigger Academy, certs." },
   { icon: "🧰", title: "12 Tools", text: "Nmap, Burp Suite, Wireshark, Metasploit, Hydra, SQLmap and more — with safe-use rules." },
   { icon: "🌐", title: "Networking Docs", text: "OSI model, ports, subnetting, key protocol flows and a hardening checklist." },
   { icon: "🗺️", title: "24-Week Roadmap", text: "Phase-by-phase plan from beginner to job-ready security professional." },
@@ -40,7 +43,8 @@ export default function Home() {
           </p>
           <div className="hero-cta">
             <Link to="/lessons" className="btn btn-primary">Start Lesson 1 →</Link>
-            <Link to="/labs" className="btn btn-ghost">Jump into a Lab</Link>
+            <Link to="/terminal" className="btn btn-ghost">🖥️ Open the Lab Terminal</Link>
+            <Link to="/lab-setup" className="btn btn-ghost">Build a Virtual Lab</Link>
           </div>
           <div className="hero-status">
             <span className={`dot ${health?.status === "ok" ? "dot-ok" : "dot-warn"}`} />

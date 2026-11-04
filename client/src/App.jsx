@@ -24,6 +24,9 @@ export default function App() {
           <Route path="/tools" element={<Tools />} />
           <Route path="/networking" element={<Networking />} />
           <Route path="/roadmap" element={<Roadmap />} />
+          <Route path="/terminal" element={<Terminal />} />
+          <Route path="/lab-setup" element={<LabSetup />} />
+          <Route path="/resources" element={<Resources />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </main>

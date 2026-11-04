@@ -28,6 +28,8 @@ export const api = {
   tool: (name) => get(`/tools/${name}`),
   networking: () => get("/networking"),
   roadmap: () => get("/roadmap"),
+  labSetup: () => get("/labsetup"),
+  resources: () => get("/resources"),
   progress: () => get("/progress"),
   setProgress: (id, done) => post(`/progress/${id}`, { done }),
 };

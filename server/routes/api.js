@@ -3,6 +3,8 @@ import { lessons } from "../data/lessons.js";
 import { labs } from "../data/labs.js";
 import { tools } from "../data/tools.js";
 import { networking } from "../data/networking.js";
+import { labSetup } from "../data/labsetup.js";
+import { resources } from "../data/resources.js";
 
 const router = Router();
 
@@ -31,6 +33,12 @@ router.get("/tools/:name", (req, res) => {
 });
 
 router.get("/networking", (_req, res) => res.json(networking));
+
+router.get("/labsetup", (_req, res) => res.json(labSetup));
+
+router.get("/resources", (_req, res) =>
+  res.json({ categories: resources.map((r) => r.category), resources })
+);
 
 router.get("/roadmap", (_req, res) => {
   res.json({
