@@ -1,0 +1,47 @@
+// Networking reference docs served by the API (mirrors docs/networking.md).
+export const networking = {
+  osiModel: [
+    { layer: 7, name: "Application", examples: "HTTP, DNS, SMTP, SSH", security: "WAF, input validation, TLS" },
+    { layer: 6, name: "Presentation", examples: "TLS/SSL, encoding, compression", security: "Encryption, certificate validation" },
+    { layer: 5, name: "Session", examples: "NetBIOS, RPC, session cookies", security: "Session management, timeouts" },
+    { layer: 4, name: "Transport", examples: "TCP, UDP, ports", security: "Port filtering, stateful firewalls" },
+    { layer: 3, name: "Network", examples: "IP, ICMP, routing, subnets", security: "ACLs, segmentation, IPS" },
+    { layer: 2, name: "Data Link", examples: "Ethernet, MAC, ARP, switches", security: "VLANs, port security, ARP spoofing defense" },
+    { layer: 1, name: "Physical", examples: "Cables, radio, fiber", security: "Physical access control" },
+  ],
+  commonPorts: [
+    { port: 20, service: "FTP (data)", proto: "TCP" },
+    { port: 21, service: "FTP (control)", proto: "TCP" },
+    { port: 22, service: "SSH", proto: "TCP" },
+    { port: 23, service: "Telnet (insecure!)", proto: "TCP" },
+    { port: 25, service: "SMTP", proto: "TCP" },
+    { port: 53, service: "DNS", proto: "TCP/UDP" },
+    { port: 80, service: "HTTP", proto: "TCP" },
+    { port: 110, service: "POP3", proto: "TCP" },
+    { port: 143, service: "IMAP", proto: "TCP" },
+    { port: 443, service: "HTTPS", proto: "TCP" },
+    { port: 445, service: "SMB / Windows file sharing", proto: "TCP" },
+    { port: 3306, service: "MySQL", proto: "TCP" },
+    { port: 3389, service: "RDP", proto: "TCP" },
+    { port: 8080, service: "HTTP proxy / alt HTTP (Burp default)", proto: "TCP" },
+  ],
+  subnetting: {
+    cheat: "CIDR /24 = 256 addresses (254 usable) · /26 = 64 (62 usable) · /27 = 32 (30 usable) · /28 = 16 (14 usable)",
+    formula: "Usable hosts = 2^(32 - prefix) - 2 (network + broadcast address)",
+    example: "10.0.0.0/26 → range 10.0.0.1 – 10.0.0.62, broadcast 10.0.0.63",
+  },
+  keyFlows: [
+    "DNS: client → resolver → root/TLD/authoritative → IP address returned",
+    "TCP handshake: SYN → SYN-ACK → ACK (connection established)",
+    "TLS 1.2/1.3: ClientHello → ServerHello + certificate → key exchange → encrypted application data",
+    "HTTP request: method + path + headers + optional body; response: status code + headers + body",
+  ],
+  hardeningChecklist: [
+    "Disable unused services and close unused ports",
+    "Replace Telnet/FTP/HTTP with SSH/SFTP/HTTPS",
+    "Segment networks with VLANs and firewall rules (default-deny)",
+    "Enable MFA everywhere, especially remote access (SSH/RDP/VPN)",
+    "Patch operating systems and services on a schedule",
+    "Centralize logs (syslog/SIEM) and alert on anomalies",
+  ],
+};

@@ -1,0 +1,7 @@
+Nov  4 09:12:01 kali sshd[1201]: Failed password for invalid user admin from 192.168.56.50 port 51122 ssh2
+Nov  4 09:12:05 kali sshd[1204]: Failed password for invalid user admin from 192.168.56.50 port 51124 ssh2
+Nov  4 09:12:11 kali sshd[1210]: Failed password for root from 10.0.2.15 port 40211 ssh2
+Nov  4 09:12:40 kali sshd[1221]: Failed password for invalid user admin from 192.168.56.50 port 51130 ssh2
+Nov  4 09:13:02 kali sshd[1230]: Failed password for invalid user test from 192.168.56.50 port 51140 ssh2
+Nov  4 09:13:15 kali sshd[1233]: Accepted password for labuser from 192.168.56.1 port 51201 ssh2
+Nov  4 09:14:03 kali sshd[1240]: Failed password for root from 10.0.2.15 port 40220 ssh2
