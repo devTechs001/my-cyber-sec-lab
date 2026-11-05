@@ -53,6 +53,27 @@ export default function LabSetup() {
         </ol>
       </div>
 
+      {vulns && (
+        <div className="panel">
+          <h3>🎯 Vulnerable systems catalog — download into your ISOLATED lab only</h3>
+          <div className="vuln-grid">
+            {vulns.systems.map((v, i) => (
+              <div className="vuln-card pop" style={{ animationDelay: `${i * 50}ms` }} key={v.name}>
+                <div className="vuln-head">
+                  <h4>{v.name}</h4>
+                  <span className="badge badge-amber">{v.difficulty}</span>
+                </div>
+                <p className="vuln-type">{v.type}</p>
+                <p>{v.highlights}</p>
+                <p className="vuln-creds">🔑 default creds: <code>{v.creds}</code></p>
+                <ol className="vuln-steps">{v.steps.map((s, j) => <li key={j}>{s}</li>)}</ol>
+                <a href={v.url} target="_blank" rel="noreferrer" className="vuln-link">🔗 download</a>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div className="ethics-banner">
         <h3>⚖️ {data.safety.split(".")[0]}.</h3>
         <p>{data.safety}</p>

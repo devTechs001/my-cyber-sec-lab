@@ -15,6 +15,8 @@ import Roadmap from "./pages/Roadmap.jsx";
 import Terminal from "./pages/Terminal.jsx";
 import LabSetup from "./pages/LabSetup.jsx";
 import Resources from "./pages/Resources.jsx";
+import Cheatsheets from "./pages/Cheatsheets.jsx";
+import Login from "./pages/Login.jsx";
 
 export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -39,6 +41,8 @@ export default function App() {
             <Route path="/terminal" element={<Terminal />} />
             <Route path="/lab-setup" element={<LabSetup />} />
             <Route path="/resources" element={<Resources />} />
+            <Route path="/cheatsheets" element={<Cheatsheets />} />
+            <Route path="/login" element={<Login />} />
             <Route path="*" element={<Home />} />
           </Routes>
           <Footer />

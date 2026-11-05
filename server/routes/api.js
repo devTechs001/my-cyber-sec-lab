@@ -8,26 +8,52 @@ import { tools } from "../data/tools.js";
 import { networking } from "../data/networking.js";
 import { labSetup } from "../data/labsetup.js";
 import { resources } from "../data/resources.js";
+import { vulnSystems } from "../data/vulnsystems.js";
+import { cheatsheets } from "../data/cheatsheets.js";
+import { register, login, logout, authMiddleware } from "../auth.js";
 
 const router = Router();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROGRESS_FILE = path.join(__dirname, "..", "data", "progress.json");
 
-// File-backed progress so completions survive server restarts (gitignored).
+// ---- per-user (or guest) progress, persisted to disk ----
 function loadProgress() {
   try {
-    return new Map(Object.entries(JSON.parse(fs.readFileSync(PROGRESS_FILE, "utf8"))));
+    const raw = JSON.parse(fs.readFileSync(PROGRESS_FILE, "utf8"));
+    // migrate legacy flat format { id: {done, at} } under "guest"
+    const first = Object.values(raw)[0];
+    if (first && typeof first === "object" && "done" in first) return { guest: raw };
+    return raw;
   } catch {
-    return new Map();
+    return { guest: {} };
   }
 }
-function saveProgress(map) {
-  try {
-    fs.writeFileSync(PROGRESS_FILE, JSON.stringify(Object.fromEntries(map), null, 2));
-  } catch { /* read-only fs on some hosts — keep in-memory */ }
+function saveProgress() {
+  try { fs.writeFileSync(PROGRESS_FILE, JSON.stringify(progress, null, 2)); } catch { /* read-only */ }
 }
 const progress = loadProgress();
+const bucketFor = (req) => (req.user ? req.user.username : "guest");
 
+router.use(authMiddleware);
+
+// ---- auth ----
+router.post("/auth/register", (req, res) => {
+  const r = register(req.body?.username, req.body?.password);
+  if (r.error) return res.status(400).json({ error: r.error });
+  res.json(r);
+});
+router.post("/auth/login", (req, res) => {
+  const r = login(req.body?.username, req.body?.password);
+  if (r.error) return res.status(401).json({ error: r.error });
+  res.json(r);
+});
+router.post("/auth/logout", (req, res) => { logout(req.token); res.json({ ok: true }); });
+router.get("/auth/me", (req, res) => {
+  if (!req.user) return res.status(401).json({ error: "not signed in" });
+  res.json({ username: req.user.username });
+});
+
+// ---- content ----
 router.get("/lessons", (_req, res) => res.json({ count: lessons.length, lessons }));
 router.get("/lessons/:id", (req, res) => {
   const lesson = lessons.find((l) => l.id === req.params.id);
@@ -53,8 +79,9 @@ router.get("/tools/:name", (req, res) => {
 });
 
 router.get("/networking", (_req, res) => res.json(networking));
-
 router.get("/labsetup", (_req, res) => res.json(labSetup));
+router.get("/vulnsystems", (_req, res) => res.json({ count: vulnSystems.length, systems: vulnSystems }));
+router.get("/cheatsheets", (_req, res) => res.json({ count: cheatsheets.length, cheatsheets }));
 
 router.get("/resources", (_req, res) =>
   res.json({ categories: resources.map((r) => r.category), resources })
@@ -71,35 +98,35 @@ router.get("/roadmap", (_req, res) => {
   });
 });
 
-router.get("/progress", (_req, res) =>
-  res.json({ progress: [...progress.entries()].map(([k, v]) => ({ id: k, ...v })) })
-);
+// ---- progress (per account; guests share the "guest" bucket) ----
+router.get("/progress", (req, res) => {
+  const bucket = progress[bucketFor(req)] || {};
+  res.json({ user: req.user?.username || null, progress: Object.entries(bucket).map(([id, v]) => ({ id, ...v })) });
+});
 router.post("/progress/:id", (req, res) => {
+  const key = bucketFor(req);
+  if (!progress[key]) progress[key] = {};
   const done = !!req.body?.done;
-  progress.set(req.params.id, { done, at: new Date().toISOString() });
-  saveProgress(progress);
-  res.json({ id: req.params.id, done });
+  progress[key][req.params.id] = { done, at: new Date().toISOString() };
+  saveProgress();
+  res.json({ id: req.params.id, done, user: req.user?.username || "guest" });
 });
 
-// ---- Aggregate dashboard ----
-router.get("/dashboard", (_req, res) => {
+// ---- aggregate dashboard ----
+router.get("/dashboard", (req, res) => {
+  const bucket = progress[bucketFor(req)] || {};
   const lessonProgress = lessons.map((l) => ({
     id: l.id, order: l.order, title: l.title, icon: l.icon, level: l.level,
-    done: !!progress.get(l.id)?.done, at: progress.get(l.id)?.at || null,
+    done: !!bucket[l.id]?.done, at: bucket[l.id]?.at || null,
   }));
   const labProgress = labs.map((l) => ({
     id: l.id, title: l.title, difficulty: l.difficulty,
-    done: !!progress.get(l.id)?.done, at: progress.get(l.id)?.at || null,
+    done: !!bucket[l.id]?.done, at: bucket[l.id]?.at || null,
   }));
   const doneLessons = lessonProgress.filter((l) => l.done).length;
   const doneLabs = labProgress.filter((l) => l.done).length;
-  const nextLesson = lessonProgress.find((l) => !l.done) || null;
-  const nextLab = labProgress.find((l) => !l.done) || null;
-  const activity = [...progress.entries()]
-    .map(([id, v]) => ({ id, done: v.done, at: v.at }))
-    .sort((a, b) => (b.at || "").localeCompare(a.at || ""))
-    .slice(0, 8);
   res.json({
+    user: req.user?.username || null,
     stats: {
       lessons: lessons.length, lessonsDone: doneLessons,
       labs: labs.length, labsDone: doneLabs,
@@ -107,7 +134,13 @@ router.get("/dashboard", (_req, res) => {
       lessonPercent: Math.round((doneLessons / lessons.length) * 100),
       labPercent: Math.round((doneLabs / labs.length) * 100),
     },
-    lessonProgress, labProgress, nextLesson, nextLab, activity,
+    lessonProgress, labProgress,
+    nextLesson: lessonProgress.find((l) => !l.done) || null,
+    nextLab: labProgress.find((l) => !l.done) || null,
+    activity: Object.entries(bucket)
+      .map(([id, v]) => ({ id, done: v.done, at: v.at }))
+      .sort((a, b) => (b.at || "").localeCompare(a.at || ""))
+      .slice(0, 8),
   });
 });
 

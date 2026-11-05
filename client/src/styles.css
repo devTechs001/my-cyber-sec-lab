@@ -483,3 +483,61 @@ body { transition: background 0.3s ease, color 0.3s ease; }
   content: ""; position: absolute; top: -40%; right: -20%; width: 120px; height: 120px;
   background: radial-gradient(circle, rgba(52, 245, 165, 0.12), transparent 70%);
 }
+
+/* ============ Auth / login ============ */
+.auth-card {
+  max-width: 420px; margin: 0 auto;
+  background: linear-gradient(160deg, var(--panel), var(--bg-soft));
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1.6rem; display: flex; flex-direction: column; gap: 0.9rem;
+}
+.auth-tabs { display: flex; gap: 0.5rem; background: var(--bg-soft); padding: 0.3rem; border-radius: 10px; }
+.auth-tab {
+  flex: 1; padding: 0.5rem; border: none; border-radius: 8px; cursor: pointer;
+  background: transparent; color: var(--muted); font-weight: 600; font-size: 0.9rem;
+}
+.auth-tab.active { background: var(--panel); color: var(--green); box-shadow: 0 2px 8px var(--shadow); }
+.auth-label { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+.auth-input {
+  background: var(--bg); border: 1px solid var(--border); border-radius: 9px;
+  padding: 0.6rem 0.8rem; color: var(--text); font-size: 0.95rem; outline: none;
+  transition: border-color 0.15s ease;
+}
+.auth-input:focus { border-color: var(--green); }
+.auth-error { margin: 0; font-size: 0.88rem; }
+.auth-submit { justify-content: center; }
+.auth-hint { margin: 0; font-size: 0.85rem; color: var(--muted); text-align: center; }
+.link-btn { background: none; border: none; color: var(--cyan); cursor: pointer; font-size: inherit; padding: 0; }
+.link-btn:hover { text-decoration: underline; }
+
+/* ============ Sidebar user chip ============ */
+.sidebar-user { padding: 0 0.4rem 0.4rem; }
+.user-chip { display: flex; align-items: center; gap: 0.45rem; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text); margin-bottom: 0.35rem; }
+.user-avatar {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--grad); color: #04120c; font-weight: 800; font-size: 0.8rem;
+}
+.side-login { width: 100%; justify-content: center; font-size: 0.85rem; padding: 0.55rem; }
+
+/* ============ Cheatsheets ============ */
+.cheatsheet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.1rem; }
+.cheat-sub { font-family: var(--font-mono); font-size: 0.78rem; color: var(--cyan); margin: 0.7rem 0 0.2rem; text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* ============ Vulnerable systems catalog ============ */
+.vuln-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; margin-top: 0.6rem; }
+.vuln-card {
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px;
+  padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.4rem;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.vuln-card:hover { border-color: rgba(255, 200, 87, 0.55); transform: translateY(-3px); }
+.vuln-head { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; }
+.vuln-head h4 { margin: 0; font-size: 1.02rem; }
+.vuln-type { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); margin: 0; }
+.vuln-card p { margin: 0; color: var(--muted); font-size: 0.88rem; }
+.vuln-creds { color: var(--amber) !important; }
+.vuln-creds code { background: var(--code-bg); padding: 0.1rem 0.4rem; border-radius: 5px; }
+.vuln-steps { margin: 0; padding-left: 1.2rem; color: var(--muted); font-size: 0.85rem; }
+.vuln-steps li { margin-bottom: 0.2rem; }
+.vuln-link { font-family: var(--font-mono); font-size: 0.82rem; margin-top: auto; }

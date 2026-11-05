@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import Icon from "./Icon.jsx";
-import { api } from "../api.js";
+import { api, tokenStore } from "../api.js";
 
 const groups = [
   {
@@ -26,6 +26,7 @@ const groups = [
     title: "Reference",
     links: [
       { to: "/tools", label: "Tools", icon: "tools" },
+      { to: "/cheatsheets", label: "Cheat-sheets", icon: "bolt" },
       { to: "/networking", label: "Networking", icon: "globe" },
       { to: "/resources", label: "Resources", icon: "link" },
       { to: "/roadmap", label: "Roadmap", icon: "map" },
@@ -35,10 +36,19 @@ const groups = [
 
 export default function Sidebar({ open, onNavigate }) {
   const [stats, setStats] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    api.dashboard().then((d) => setStats(d.stats)).catch(() => {});
+    api.dashboard().then((d) => { setStats(d.stats); setUser(d.user); }).catch(() => {});
+    api.me().then((u) => setUser(u.username)).catch(() => {});
   }, []);
+
+  const signOut = async () => {
+    try { await api.logout(); } catch { /* ignore */ }
+    tokenStore.set(null);
+    setUser(null);
+    window.location.href = "/";
+  };
 
   return (
     <>
@@ -85,6 +95,18 @@ export default function Sidebar({ open, onNavigate }) {
               </small>
             )}
           </Link>
+          <div className="sidebar-user">
+            {user ? (
+              <>
+                <span className="user-chip"><span className="user-avatar">{user[0].toUpperCase()}</span> {user}</span>
+                <button className="link-btn" onClick={signOut}>sign out</button>
+              </>
+            ) : (
+              <Link to="/login" className="btn btn-ghost side-login" onClick={onNavigate}>
+                <Icon name="shield" size={15} /> Sign in / Register
+              </Link>
+            )}
+          </div>
           <div className="sidebar-ethics">
             <Icon name="shield" size={14} /> Authorized lab targets only
           </div>

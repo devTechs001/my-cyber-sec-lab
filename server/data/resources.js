@@ -46,8 +46,58 @@ export const resources = [
       { name: "eJPT (INE)", url: "https://ine.com/learning/certifications/internal/elearning-security-junior-penetration-tester-cert", desc: "Entry-level junior pentester cert — great first goal." },
       { name: "CompTIA Security+", url: "https://www.comptia.org/certifications/security/", desc: "Widely recognized baseline security certification." },
       { name: "OSCP (OffSec)", url: "https://www.offsec.com/courses/pen-200/", desc: "The gold-standard hands-on pentest certification (PEN-200)." },
+      { name: "PNPT (TCM)", url: "https://cert.tcm-sec.com/pnpt", desc: "Practical network pentest cert with a real report deliverable." },
       { name: "HackerOne / Bugcrowd", url: "https://www.hackerone.com/", desc: "Legal bug-bounty programs — disclose responsibly, get paid." },
       { name: "FIRST CVSS calculator", url: "https://www.first.org/cvss/calculator/3.1", desc: "Score vulnerability severity consistently in reports." },
+    ],
+  },
+  {
+    category: "Books & reading",
+    items: [
+      { name: "The Web Application Hacker's Handbook (Wiley)", url: "https://www.wiley.com/en-us/The+Web+Application+Hacker%27s+Handbook%3A+Finding+and+Exploiting+Security+Flaws%2C+2nd+Edition-p-9781118026472", desc: "The classic deep-dive on web attacks — still the reference." },
+      { name: "RTFM: Red Team Field Manual (Ben Clark)", url: "https://www.amazon.com/RTFM-Red-Team-Field-Manual/dp/1494295512", desc: "Compact command reference for engagements." },
+      { name: "The Hacker Playbook series (Peter Kim)", url: "https://www.amazon.com/s?k=hacker+playbook+peter+kim", desc: "Practical pentest methodology, book 1-3." },
+      { name: "Krebs on Security", url: "https://krebsonsecurity.com/", desc: "Top-tier investigative journalism on breaches & cybercrime." },
+      { name: "PortSwigger Daily Swig", url: "https://portswigger.net/daily-swig", desc: "Daily web-security news and research roundups." },
+    ],
+  },
+  {
+    category: "Video learning (YouTube)",
+    items: [
+      { name: "IppSec", url: "https://www.youtube.com/@ippsec", desc: "Detailed HackTheBox walkthroughs — the best for methodology." },
+      { name: "John Hammond", url: "https://www.youtube.com/@JohnHammond010", desc: "CTF, malware and pentest walkthroughs, very accessible." },
+      { name: "LiveOverflow", url: "https://www.youtube.com/@LiveOverflow", desc: "Deep technical explanations of web & binary security." },
+      { name: "NetworkChuck", url: "https://www.youtube.com/@NetworkChuck", desc: "Energetic networking & security fundamentals for beginners." },
+      { name: "HackerSploit", url: "https://www.youtube.com/@HackerSploit", desc: "Tutorials on pentesting tools and techniques." },
+    ],
+  },
+  {
+    category: "More labs & challenges",
+    items: [
+      { name: "OverTheWire (bandit/wargames)", url: "https://overthewire.org/wargames/", desc: "Free Linux/shell wargames from beginner (bandit) upward." },
+      { name: "W3Challs", url: "https://w3challs.com/", desc: "Web hacking challenges with a friendly community." },
+      { name: "Root-Me", url: "https://www.root-me.org/", desc: "Large multi-category challenge platform (web, network, forensics…)." },
+      { name: "Blue Team Labs Online (BTLO)", url: "https://blueteamlabs.online/", desc: "Defensive/SOC investigations — great for blue-team skills." },
+      { name: "LetsDefend", url: "https://letsdefend.io/", desc: "SOC analyst training with real alert investigations." },
+    ],
+  },
+  {
+    category: "Advanced tooling",
+    items: [
+      { name: "BloodHound / SharpHound", url: "https://github.com/BloodHoundAD/BloodHound", desc: "Active Directory attack-path mapping (lab domains only)." },
+      { name: "Impacket & CrackMapExec", url: "https://github.com/fortra/impacket", desc: "Python toolkit for SMB/Windows protocol attacks in labs." },
+      { name: "Gobuster/Dirsearch", url: "https://github.com/OJ/gobuster", desc: "Content & subdomain discovery on authorized targets." },
+      { name: "OWASP ZAP", url: "https://www.zaproxy.org/", desc: "Free automated web scanner + proxy (Burp alternative)." },
+      { name: "Snyk / Trivy", url: "https://snyk.io/", desc: "Dependency & container vulnerability scanning for DevSecOps." },
+    ],
+  },
+  {
+    category: "Cloud & defensive security",
+    items: [
+      { name: "AWS CloudGoat", url: "https://github.com/RhinoSecurityLabs/cloudgoat", desc: "Intentionally vulnerable AWS infra for practicing cloud attacks (your own AWS account)." },
+      { name: "GCP Security labs", url: "https://github.com/GoogleCloudPlatform/microservices-demo", desc: "Practice securing cloud-native apps on GCP free tier." },
+      { name: "Wazuh (SIEM)", url: "https://wazuh.com/", desc: "Open-source SIEM/XDR — deploy in your lab to practice detection." },
+      { name: "Splunk Free / Boss of the SOC", url: "https://www.splunk.com/en_us/blog/security/boss-of-the-soc.html", desc: "Free Splunk training + BOTs datasets for log analysis." },
     ],
   },
 ];
