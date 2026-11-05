@@ -44,7 +44,7 @@ export default function Tools() {
             <h3>{t.name}</h3>
             <p>{t.description}</p>
             <CodeBlock title="Install" lines={[t.install]} />
-            <CodeBlock title="Example (lab only)" lines={[t.example]} />
+            <CodeBlock title="Real commands (lab / authorized only)" lines={t.commands || [t.example]} />
             <p className="safety-text">⚖️ {t.safety}</p>
           </div>
         ))}
