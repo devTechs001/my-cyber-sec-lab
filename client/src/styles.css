@@ -541,3 +541,28 @@ body { transition: background 0.3s ease, color 0.3s ease; }
 .vuln-steps { margin: 0; padding-left: 1.2rem; color: var(--muted); font-size: 0.85rem; }
 .vuln-steps li { margin-bottom: 0.2rem; }
 .vuln-link { font-family: var(--font-mono); font-size: 0.82rem; margin-top: auto; }
+
+/* ============ Projects ============ */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.1rem; }
+.project-card {
+  background: linear-gradient(160deg, var(--panel), var(--bg-soft));
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1.3rem 1.4rem;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+.project-card:hover { border-color: rgba(56, 214, 245, 0.5); transform: translateY(-4px); box-shadow: 0 12px 30px var(--shadow); }
+.project-head { display: flex; gap: 0.9rem; align-items: flex-start; }
+.project-head h3 { margin: 0 0 0.35rem; font-size: 1.05rem; }
+.project-meta { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.project-summary { color: var(--muted); font-size: 0.92rem; margin: 0.7rem 0 0.3rem; }
+.project-example { color: var(--cyan); font-size: 0.85rem; margin: 0.3rem 0; }
+.project-steps { font-size: 0.88rem; }
+.showcase-list { list-style: none; padding: 0; margin: 0.3rem 0 0; }
+.showcase-list li { display: flex; align-items: center; gap: 0.45rem; color: var(--muted); font-size: 0.87rem; margin-bottom: 0.25rem; }
+.showcase-list .icon { color: var(--green); }
+.showcase-guide { margin-top: 1.4rem; }
+.readme-template {
+  font-family: var(--font-mono); font-size: 0.82rem; color: #c8e6c9;
+  background: var(--code-bg); border: 1px solid var(--border); border-radius: 10px;
+  padding: 0.9rem 1rem; overflow-x: auto; margin: 0.4rem 0 0;
+}

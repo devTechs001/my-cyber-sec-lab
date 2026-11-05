@@ -58,6 +58,13 @@ help → ls /lab → cat README.txt → ping 192.168.56.101 → nmap -sV 192.168
 → set RHOSTS 192.168.56.101 → exploit
 ```
 
+## 🚀 Portfolio projects (`/projects`)
+7 job-ready blueprints with lab steps, tools and "what to showcase" checklists,
+filterable by role — **Blue Team/SOC**: SIEM lab (Splunk/Wazuh), phishing triage,
+SOAR-lite Python automation, Sigma detection engineering · **Red Team**: AD attack
+chain, web exploitation walkthrough (DVWA/Juice Shop), vulnerability management
+cycle (OpenVAS→DefectDojo). Includes the GitHub-README template + LinkedIn showcase guide.
+
 ## 🏗️ Real virtual lab (`/lab-setup` + `/resources`)
 Step-by-step guide to build an isolated lab: VirtualBox host-only network
 `192.168.56.0/24`, **Kali Linux** attack box, **Metasploitable2/DVWA** vulnerable
@@ -104,7 +111,13 @@ SQLmap · Netcat · Aircrack-ng · OWASP ZAP · LinPEAS/WinPEAS
 | `GET /api/tools` · `/api/tools/:name` | tool reference |
 | `GET /api/networking` | networking docs |
 | `GET /api/roadmap` | 24-week plan |
-| `GET/POST /api/progress/:id` | mark lessons complete |
+| `GET /api/labsetup` · `/api/vulnsystems` | virtual-lab guide + vulnerable-systems catalog |
+| `GET /api/cheatsheets` | command cheat-sheets |
+| `GET /api/resources` | 50 official learning links (10 categories) |
+| `GET /api/projects?role=…` · `/api/projects/:id` | 7 portfolio project blueprints + showcase guide |
+| `GET /api/dashboard` | aggregate stats, per-user progress, next-up, activity |
+| `POST /api/auth/register\|login\|logout` · `GET /api/auth/me` | user accounts (scrypt + bearer token) |
+| `GET/POST /api/progress/:id` | mark lessons/labs complete (per account, persisted) |
 
 ## 🤝 Contributing
 

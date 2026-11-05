@@ -5,6 +5,7 @@ import SectionHeading from "../components/SectionHeading.jsx";
 import Icon from "../components/Icon.jsx";
 
 const quickLinks = [
+  { to: "/projects", icon: "rocket", title: "Projects", desc: "7 job-ready Blue/Red team project blueprints with showcase checklists" },
   { to: "/terminal", icon: "terminal", title: "Lab Terminal", desc: "Simulated Kali shell — practice nmap & msfconsole in-browser" },
   { to: "/lab-setup", icon: "server", title: "Virtual Lab", desc: "Build a real isolated lab: Kali + Metasploitable + DVWA" },
   { to: "/labs", icon: "flask", title: "Hands-on Labs", desc: "8 dedicated attack scenarios with steps & deliverables" },

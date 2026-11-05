@@ -42,6 +42,8 @@ export const api = {
   labSetup: () => get("/labsetup"),
   vulnSystems: () => get("/vulnsystems"),
   cheatsheets: () => get("/cheatsheets"),
+  projects: (role = "All") => get(`/projects?role=${encodeURIComponent(role)}`),
+  project: (id) => get(`/projects/${id}`),
   resources: () => get("/resources"),
   dashboard: () => get("/dashboard"),
   progress: () => get("/progress"),

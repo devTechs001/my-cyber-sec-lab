@@ -10,6 +10,7 @@ import { labSetup } from "../data/labsetup.js";
 import { resources } from "../data/resources.js";
 import { vulnSystems } from "../data/vulnsystems.js";
 import { cheatsheets } from "../data/cheatsheets.js";
+import { projects, showcaseGuide } from "../data/projects.js";
 import { register, login, logout, authMiddleware } from "../auth.js";
 
 const router = Router();
@@ -82,6 +83,17 @@ router.get("/networking", (_req, res) => res.json(networking));
 router.get("/labsetup", (_req, res) => res.json(labSetup));
 router.get("/vulnsystems", (_req, res) => res.json({ count: vulnSystems.length, systems: vulnSystems }));
 router.get("/cheatsheets", (_req, res) => res.json({ count: cheatsheets.length, cheatsheets }));
+
+router.get("/projects", (req, res) => {
+  const role = req.query.role;
+  const list = role && role !== "All" ? projects.filter((p) => p.role === role) : projects;
+  res.json({ count: list.length, total: projects.length, roles: ["All", "Blue Team", "Red Team"], projects: list, showcaseGuide });
+});
+router.get("/projects/:id", (req, res) => {
+  const p = projects.find((x) => x.id === req.params.id);
+  if (!p) return res.status(404).json({ error: "project not found" });
+  res.json({ ...p, showcaseGuide });
+});
 
 router.get("/resources", (_req, res) =>
   res.json({ categories: resources.map((r) => r.category), resources })

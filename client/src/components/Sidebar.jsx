@@ -6,7 +6,10 @@ import { api, tokenStore } from "../api.js";
 const groups = [
   {
     title: "Overview",
-    links: [{ to: "/dashboard", label: "Dashboard", icon: "dashboard" }],
+    links: [
+      { to: "/dashboard", label: "Dashboard", icon: "dashboard" },
+      { to: "/projects", label: "Projects", icon: "rocket" },
+    ],
   },
   {
     title: "Learn",
