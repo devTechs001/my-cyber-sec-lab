@@ -45,6 +45,7 @@ export const api = {
   projects: (role = "All") => get(`/projects?role=${encodeURIComponent(role)}`),
   project: (id) => get(`/projects/${id}`),
   resources: () => get("/resources"),
+  reference: (category) => get(category ? `/reference?category=${encodeURIComponent(category)}` : "/reference"),
   dashboard: () => get("/dashboard"),
   progress: () => get("/progress"),
   setProgress: (id, done) => post(`/progress/${id}`, { done }),

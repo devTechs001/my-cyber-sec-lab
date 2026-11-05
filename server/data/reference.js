@@ -1,0 +1,199 @@
+// Attacks & Defense reference — a trustworthy portfolio reference point.
+// Every attack entry: what it is, how it works, REAL example commands (lab/authorized
+// only), how to DETECT it, how to PROTECT against it, and MITRE ATT&CK mapping.
+export const reference = {
+  intro: "A practical attack/defense reference: network troubleshooting, WiFi, recon, and web attacks — with real commands, detection and mitigations. Authorized lab targets only.",
+  categories: [
+    {
+      id: "network-troubleshooting",
+      title: "Network Troubleshooting",
+      icon: "🔧",
+      items: [
+        {
+          title: "Is the host reachable?",
+          what: "Start with ICMP echo to isolate L3 problems before blaming the app.",
+          commands: ["ping -c 4 192.168.56.101", "ping -c 4 8.8.8.8   # is it just the target or all traffic?"],
+          fix: "If ping fails but local subnet works → check target firewall/host. If all fail → gateway/DHCP issue.",
+        },
+        {
+          title: "Where does the path break?",
+          what: "Traceroute shows each hop; the last responding hop is where traffic dies.",
+          commands: ["traceroute 192.168.56.101", "tracepath 8.8.8.8"],
+          fix: "Hangs at hop N → investigate that router/firewall (ACL, MTU).",
+        },
+        {
+          title: "DNS resolution problems",
+          what: "Apps fail with 'name resolution' errors while IPs work — classic DNS issue.",
+          commands: ["dig example.com", "dig +short NS example.com", "nslookup example.com 8.8.8.8", "cat /etc/resolv.conf"],
+          fix: "Fix resolver in /etc/resolv.conf or DHCP; flush cache: systemd-resolve --flush-caches.",
+        },
+        {
+          title: "Which ports are actually listening?",
+          what: "Service may be down or bound to the wrong interface/port.",
+          commands: ["ss -tulnp", "sudo netstat -tulnp", "nc -zv 127.0.0.1 80"],
+          fix: "Nothing listening → start/enable the service; bound to 127.0.0.1 only → change bind address.",
+        },
+        {
+          title: "Is a firewall blocking me?",
+          what: "iptables/nftables rules silently drop packets — check before blaming the network.",
+          commands: ["sudo iptables -L -n -v", "sudo nft list ruleset", "sudo iptables -L INPUT -n --line-numbers"],
+          fix: "Add ACCEPT rule for the port in the lab, or remove the blocking rule (lab only).",
+        },
+        {
+          title: "HTTP layer debugging",
+          what: "Service is up but returns errors — inspect the actual HTTP exchange.",
+          commands: ["curl -v http://192.168.56.102/", "curl -I http://192.168.56.102/", "curl -s http://192.168.56.102/ | head"],
+          fix: "404 → wrong path; 403 → permissions; 500 → check server logs (/var/log/apache2/error.log).",
+        },
+      ],
+    },
+    {
+      id: "wifi",
+      title: "WiFi Security — attacks & protection",
+      icon: "📶",
+      items: [
+        {
+          title: "WPA handshake capture (attack, own AP only)",
+          what: "Attacker captures the 4-way handshake to attempt offline cracking of the WiFi password.",
+          commands: ["airmon-ng start wlan0", "airodump-ng wlan0mon -c 6 --bssid <YOUR-AP> -w cap", "aireplay-ng -0 3 -a <YOUR-AP> wlan0mon", "aircrack-ng cap-01.cap -w rockyou.txt   # your own AP only"],
+          protect: "Use WPA3 (or WPA2-AES with a long unique passphrase ≥ 20 chars), disable WPS, update firmware.",
+          mitre: "T1110 (brute force), Credential Access",
+        },
+        {
+          title: "Evil twin / rogue AP",
+          what: "Fake AP with the same SSID harvests credentials via a captive portal.",
+          commands: ["# attacker side (lab): fluxion / hostapd-wpe with a clone of your lab SSID"],
+          protect: "WPA3-Enterprise (802.1X) with certificate validation; never auto-connect to open WiFi; use VPN on public WiFi.",
+          mitre: "T1557 (adversary-in-the-middle), Initial Access",
+        },
+        {
+          title: "Deauthentication flood",
+          what: "Flooding deauth frames knocks clients off, forcing reconnects (handshake capture / DoS).",
+          commands: ["aireplay-ng -0 0 -a <AP-BSSID> wlan0mon   # LAB AP ONLY"],
+          protect: "802.11w (Protected Management Frames), WPA3, client isolation on the AP.",
+          mitre: "T1498 (network DoS)",
+        },
+        {
+          title: "WiFi hardening checklist",
+          what: "Defense-in-depth for any wireless network you administer.",
+          commands: ["wpa_passphrase MySSID 'long-random-passphrase'   # generate PSK", "# router settings: WPA3/WPA2-AES, WPS OFF, 802.11w ON, strong admin password, firmware updated, remote admin OFF"],
+          protect: "Also: separate guest network, client isolation, disable SSID broadcast (minor), MAC filtering is NOT real security.",
+        },
+      ],
+    },
+    {
+      id: "recon",
+      title: "Reconnaissance (passive & active)",
+      icon: "🔍",
+      items: [
+        {
+          title: "Passive OSINT (no traffic to target)",
+          what: "Gather intel from third-party sources before any active scan — stays quieter and legal.",
+          commands: ["whois example.com", "dig example.com ANY +short", "dig +short NS example.com", "theHarvester -d example.com -b all   # YOUR domain", "curl -s 'https://crt.sh/?q=%25.example.com&output=json' | python3 -m json.tool | grep name_value"],
+          protect: "From the defender view: minimize exposed data — no sensitive info in DNS TXT/WHOIS, monitor CT logs for unexpected subdomains.",
+          mitre: "T1595 (active scanning is next), Reconnaissance",
+        },
+        {
+          title: "Subdomain & attack-surface discovery",
+          what: "Map the external surface: subdomains, live hosts, technologies.",
+          commands: ["assetfinder example.com", "subfinder -d example.com", "httpx -l subs.txt -title -status-code   # probe live web apps"],
+          protect: "Inventory assets, shut down stale ones, monitor for new subdomains (certificate transparency alerts).",
+          mitre: "T1190 (exploit public-facing app), Discovery",
+        },
+        {
+          title: "Active scanning (authorized scope only)",
+          what: "Once scope is written, enumerate live hosts and services.",
+          commands: ["nmap -sn 203.0.113.0/24   # in-scope range only", "nmap -sV --top-ports 1000 <target>", "nmap -sV -p 80,443 --script http-enum <target> -oA recon"],
+          protect: "Defenders: IDS/IPS alerts on scan signatures (SYN bursts), rate-limit, geo-block where appropriate.",
+          mitre: "T1046 (network service scanning)",
+        },
+      ],
+    },
+    {
+      id: "web-attacks",
+      title: "Web Application Attacks — XSS, HTTP, MITM, DirB & more",
+      icon: "🕷️",
+      items: [
+        {
+          title: "Cross-Site Scripting (XSS)",
+          what: "Injecting scripts into pages viewed by other users. Reflected (in URL), stored (in DB), DOM-based.",
+          commands: ["# Reflected test (lab): http://dvwa.local/xss?q=<script>alert(1)</script>", "# Stored test: <img src=x onerror=alert(document.cookie)> in guestbook", "# DOM-based: payload in location.hash handled unsafely by JS"],
+          detect: "WAF rules for <script>/onerror=, CSP violation reports, review stored content.",
+          protect: "Output-encode on render, input validation, CSP (script-src 'self'), HttpOnly+Secure cookies, sanitize with DOMPurify.",
+          mitre: "T1059.007 (JavaScript), Execution",
+        },
+        {
+          title: "SQL Injection (SQLi)",
+          what: "Unsanitized input alters SQL queries — auth bypass, data dump.",
+          commands: ["# Auth bypass (lab): ' OR '1'='1' --", "# UNION dump: ' UNION SELECT user,password FROM users --", "sqlmap -u 'http://dvwa.local/sqli/?id=1' --dbs   # lab only"],
+          detect: "WAF SQLi signatures, DB error logs, unusual query patterns in logs.",
+          protect: "Parameterized queries/prepared statements, least-privilege DB user, ORM, input validation, disable error display.",
+          mitre: "T1190, Initial Access / Credential Access",
+        },
+        {
+          title: "Man-in-the-Middle (MITM)",
+          what: "Attacker intercepts/modifies traffic between client and server (ARP spoof on LAN, rogue AP, DNS spoof).",
+          commands: ["# LAB ONLY: ettercap -T -M arp:remote /192.168.56.101/ /192.168.56.1/", "bettercap -iface eth0  →  set net.sniff on; net.probe on", "# detection: arp -a (duplicate MACs), Wireshark for ARP storms"],
+          detect: "Duplicate IP/MAC in ARP table, unexpected cert warnings, TLS anomalies in Wireshark.",
+          protect: "TLS everywhere + HSTS, certificate pinning in apps, ARP spoof detection (dynamic ARP inspection on switches), WPA3, VPN on untrusted networks.",
+          mitre: "T1557, Credential Access",
+        },
+        {
+          title: "HTTP deep dive & hardening",
+          what: "HTTP is plaintext: methods (GET/POST/PUT/DELETE), headers, cookies, status codes. Every header is attack surface.",
+          commands: ["curl -v http://dvwa.local/          # see request+response headers", "curl -X POST -d 'u=admin&p=x' http://dvwa.local/login.php", "curl -I https://example.com         # check security headers"],
+          protect: "Security headers: Content-Security-Policy, X-Content-Type-Options: nosniff, X-Frame-Options: DENY, Strict-Transport-Security, Referrer-Policy, Permissions-Policy; HttpOnly/Secure/SameSite cookies.",
+          mitre: "Defense-in-depth for T1557/T1539",
+        },
+        {
+          title: "Directory / content busting (DirB)",
+          what: "Brute-forcing hidden paths (/admin, /backup.zip, /.git) that aren't linked.",
+          commands: ["gobuster dir -u http://dvwa.local -w /usr/share/wordlists/dirb/common.txt -x php,txt,bak", "ffuf -u http://dvwa.local/FUZZ -w common.txt -mc 200,301", "curl -s http://dvwa.local/robots.txt   # check exposed hints first"],
+          detect: "WAF/IDS alerts on high-frequency 404s from one source; web server access logs.",
+          protect: "Don't rely on obscurity: real auth on every path, disable directory listing, remove backups/.git from webroot, rate limiting.",
+          mitre: "T1083 (file & directory discovery)",
+        },
+        {
+          title: "Session hijacking & CSRF",
+          what: "Stealing session cookies (XSS/network sniff) or tricking a logged-in user into actions (CSRF).",
+          commands: ["# CSRF PoC (lab): <img src='http://dvwa.local/change-password?new=x'> sent to a logged-in admin"],
+          detect: "Session anomaly detection (new IP/UA mid-session), Referer/Origin mismatch logs.",
+          protect: "CSRF tokens + SameSite=Strict/Lax cookies, short session lifetime, re-auth for sensitive actions, MFA, regenerate session ID on login.",
+          mitre: "T1539 (steal web session cookie), T1565",
+        },
+        {
+          title: "LFI / RFI & file upload",
+          what: "Include/require attacker-controlled paths (LFI→log poisoning→RCE) or upload a webshell.",
+          commands: ["# LFI test (lab): ?page=../../../../etc/passwd", "# Log poisoning: inject <?php system($_GET['c']); ?> into User-Agent, then ?page=/var/log/apache2/access.log&c=id", "# Upload bypass: shell.php → shell.php.jpg + Content-Type change (lab)"],
+          protect: "Allowlist of includable files, upload to non-executable dir with random names + extension/MIME/content validation, disable PHP in upload dirs (php_admin_flag engine off).",
+          mitre: "T1190 / T1505.003 (web shell)",
+        },
+      ],
+    },
+    {
+      id: "protection",
+      title: "Protection & hardening playbook",
+      icon: "🛡️",
+      items: [
+        {
+          title: "Universal hardening checklist",
+          what: "The baseline that stops most opportunistic attacks.",
+          commands: ["# servers: ufw default deny incoming; ufw allow 22,443", "unattended-upgrades (auto security patches)", "disable root SSH login (PermitRootLogin no)", "fail2ban for SSH/HTTP brute force", "MFA everywhere (SSH keys + TOTP)"],
+          fix: "Verify with: lynis audit system (lab) — a free auditing tool.",
+        },
+        {
+          title: "Monitoring & detection",
+          what: "You can't respond to what you can't see.",
+          commands: ["tail -f /var/log/auth.log | grep 'Failed password'", "python3 python/labs/log_analyzer.py /var/log/auth.log", "# centralize into SIEM (Wazuh/Splunk) with alert rules"],
+          fix: "Alert on: brute force bursts, new admin users, SUID changes, web 404 spikes.",
+        },
+        {
+          title: "Incident response basics",
+          what: "When something fires: contain → eradicate → recover → lessons.",
+          commands: ["# contain: block source IP (iptables -A INPUT -s <ip> -j DROP)", "# preserve evidence: cp logs to secure storage, snapshot the VM", "# eradicate: patch, rotate ALL credentials, remove persistence", "# write the incident report (docs/report-template.md)"],
+          fix: "Practice the loop in your lab so it's muscle memory in a real incident.",
+        },
+      ],
+    },
+  ],
+};

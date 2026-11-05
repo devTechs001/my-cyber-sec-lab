@@ -11,6 +11,7 @@ import { resources } from "../data/resources.js";
 import { vulnSystems } from "../data/vulnsystems.js";
 import { cheatsheets } from "../data/cheatsheets.js";
 import { projects, showcaseGuide } from "../data/projects.js";
+import { reference } from "../data/reference.js";
 import { register, login, logout, authMiddleware } from "../auth.js";
 
 const router = Router();
@@ -98,6 +99,13 @@ router.get("/projects/:id", (req, res) => {
 router.get("/resources", (_req, res) =>
   res.json({ categories: resources.map((r) => r.category), resources })
 );
+
+router.get("/reference", (req, res) => {
+  const cat = req.query.category;
+  const cats = reference.categories.map((c) => ({ id: c.id, title: c.title, icon: c.icon, items: c.items.length }));
+  const list = cat ? reference.categories.filter((c) => c.id === cat) : reference.categories;
+  res.json({ intro: reference.intro, categories: cats, sections: list });
+});
 
 router.get("/roadmap", (_req, res) => {
   res.json({

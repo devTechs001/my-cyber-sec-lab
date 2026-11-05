@@ -32,6 +32,7 @@ const groups = [
       { to: "/cheatsheets", label: "Cheat-sheets", icon: "bolt" },
       { to: "/networking", label: "Networking", icon: "globe" },
       { to: "/resources", label: "Resources", icon: "link" },
+      { to: "/reference", label: "Attacks & Defense", icon: "target" },
       { to: "/roadmap", label: "Roadmap", icon: "map" },
     ],
   },
