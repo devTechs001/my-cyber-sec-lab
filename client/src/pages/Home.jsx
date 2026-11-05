@@ -5,15 +5,16 @@ import SectionHeading from "../components/SectionHeading.jsx";
 import Icon from "../components/Icon.jsx";
 
 const highlights = [
-  { icon: "🎓", title: "12 Lessons", text: "From networking fundamentals to building your own virtual attack lab — structured learning path." },
-  { icon: "🧪", title: "8 Hands-on Labs", text: "Web terminal warm-up, DVWA, Metasploitable, Wireshark pcaps, privesc VMs and more." },
-  { icon: "🖥️", title: "Live Web Terminal", text: "Practice Linux + nmap + Metasploit syntax right in your browser — safe simulation." },
-  { icon: "🖥️", title: "Virtual Lab Guide", text: "Kali attack box + vulnerable VMs (Metasploitable, DVWA) on an isolated host-only network." },
-  { icon: "🔗", title: "Real Resources", text: "Official links: Kali, VulnHub, TryHackMe, HackTheBox, PortSwigger Academy, certs." },
-  { icon: "🧰", title: "12 Tools", text: "Nmap, Burp Suite, Wireshark, Metasploit, Hydra, SQLmap and more — with safe-use rules." },
-  { icon: "🌐", title: "Networking Docs", text: "OSI model, ports, subnetting, key protocol flows and a hardening checklist." },
-  { icon: "🗺️", title: "24-Week Roadmap", text: "Phase-by-phase plan from beginner to job-ready security professional." },
-  { icon: "⚖️", title: "Ethics First", text: "Every lab is scoped to systems you own or are authorized to test." },
+  { icon: "book", title: "17 Lessons", text: "Networking → web deep dive → SIEM/blue team → AD attacks → cloud → incident response." },
+  { icon: "flask", title: "13 Hands-on Labs", text: "Terminal warm-up, DVWA, Metasploitable, SIEM detection, AD chain, phishing triage, WiFi and more." },
+  { icon: "terminal", title: "Live Web Terminal", text: "Practice Linux + nmap + Metasploit syntax right in your browser — safe simulation." },
+  { icon: "server", title: "Virtual Lab Guide", text: "Kali attack box + vulnerable VMs (Metasploitable, DVWA) on an isolated host-only network." },
+  { icon: "link", title: "Real Resources", text: "Official links: Kali, VulnHub, TryHackMe, HackTheBox, PortSwigger Academy, certs." },
+  { icon: "tools", title: "22 Tools", text: "Nmap, Burp, Wireshark, Metasploit, BloodHound, Impacket… each with real commands." },
+  { icon: "target", title: "Attacks & Defense", text: "Troubleshooting, WiFi, recon, XSS/SQLi/MITM/DirB — with detection & mitigations." },
+  { icon: "globe", title: "Networking Docs", text: "OSI model, ports, subnetting, key protocol flows and a hardening checklist." },
+  { icon: "map", title: "24-Week Roadmap", text: "Phase-by-phase plan from beginner to job-ready security professional." },
+  { icon: "shield", title: "Ethics First", text: "Every lab is scoped to systems you own or are authorized to test." },
 ];
 
 const featuredTools = ["Nmap", "Burp Suite", "Wireshark", "Metasploit"];
