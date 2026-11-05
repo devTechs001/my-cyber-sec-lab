@@ -1,0 +1,4 @@
+# Python lab scripts in python/labs/ use only the standard library.
+# Optional (for extended labs):
+# scapy==2.5.0        # packet crafting/analysis (lab networks only)
+# requests==2.32.3    # HTTP interaction with lab apps

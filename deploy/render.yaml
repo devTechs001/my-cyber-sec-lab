@@ -1,0 +1,18 @@
+# Render Blueprint — deploy the Express API (server/) as a Web Service.
+# Create at https://dashboard.render.com → Blueprints → New Blueprint (point at this repo),
+# or deploy manually: New → Web Service → root directory = server, Build = npm install,
+# Start = npm start. Then set env var CLIENT_URL to your Netlify URL.
+
+services:
+  - type: web
+    name: cyber-ec-lab-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # - key: CLIENT_URL
+      #   value: https://your-site.netlify.app
+    healthCheckPath: /api/health
