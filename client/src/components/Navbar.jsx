@@ -8,7 +8,6 @@ export default function Navbar({ onMenu }) {
     <header className="navbar">
       <div className="navbar-left">
         <button className="menu-btn" onClick={onMenu} aria-label="Toggle navigation menu">
-          <Icon name="map" size={0} className="hidden" />
           <span className="menu-bars"><i /><i /><i /></span>
         </button>
         <Link to="/" className="brand">

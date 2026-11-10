@@ -1,0 +1,32 @@
+# Netlify configuration — MUST be at the repository root (Netlify does not read deploy/).
+# Deploy: Netlify UI -> "Add new site -> Import from Git" -> select this repo.
+# Base directory: client - Build command: npm run build - Publish directory: dist
+
+[build]
+  base = "client"
+  command = "npm run build"
+  publish = "dist"
+
+# Proxy API calls to the Render backend so the site works on one domain.
+# Replace the host with your actual Render service URL.
+[[redirects]]
+  from = "/api/*"
+  to = "https://cyber-ec-lab-api.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+# SPA fallback for React Router — keep AFTER the /api/* proxy above
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security headers (also mirrored in server/index.js for the full-stack preview)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://*.onrender.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
