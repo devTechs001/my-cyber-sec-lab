@@ -58,11 +58,17 @@ help → ls /lab → cat README.txt → ping 192.168.56.101 → nmap -sV 192.168
 ```
 
 ## 🚀 Portfolio projects (`/projects`)
-7 job-ready blueprints with lab steps, tools and "what to showcase" checklists,
-filterable by role — **Blue Team/SOC**: SIEM lab (Splunk/Wazuh), phishing triage,
-SOAR-lite Python automation, Sigma detection engineering · **Red Team**: AD attack
-chain, web exploitation walkthrough (DVWA/Juice Shop), vulnerability management
-cycle (OpenVAS→DefectDojo). Includes the GitHub-README template + LinkedIn showcase guide.
+7 practical blueprints with lab steps, tools, scenarios and deliverables, filterable
+by role — **Blue Team/SOC**: SIEM lab (Splunk/Wazuh), phishing triage, SOAR-lite
+Python automation, Sigma detection engineering · **Red Team**: AD attack chain, web
+application testing (DVWA/Juice Shop), and vulnerability management (OpenVAS→DefectDojo).
+
+## 🛡️ SOC Analyst path (`/soc-analyst`)
+A complete alert-to-closure workflow: scope and case setup → telemetry validation →
+alert triage → Windows/Linux and network investigation → phishing triage → threat
+hunting and detection validation → approved containment → recovery → incident report.
+Each phase includes tools, lab-safe commands/queries, procedure steps, and evidence
+checklists. The guided case uses a disposable Windows VM and synthetic activity.
 
 ## 🏗️ Real virtual lab (`/lab-setup` + `/resources`)
 Step-by-step guide to build an isolated lab: VirtualBox host-only network
@@ -109,6 +115,7 @@ SQLmap · Netcat · Aircrack-ng · OWASP ZAP · LinPEAS/WinPEAS
 | `GET /api/labs` · `/api/labs/:id` | hands-on labs |
 | `GET /api/tools` · `/api/tools/:name` | tool reference |
 | `GET /api/networking` | networking docs |
+| `GET /api/soc-playbook` | SOC incident lifecycle, commands, and guided lab case |
 | `GET /api/roadmap` | 24-week plan |
 | `GET /api/labsetup` · `/api/vulnsystems` | virtual-lab guide + vulnerable-systems catalog |
 | `GET /api/cheatsheets` | command cheat-sheets |

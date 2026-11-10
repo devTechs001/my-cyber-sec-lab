@@ -7,6 +7,7 @@ import Icon from "../components/Icon.jsx";
 const quickLinks = [
   { to: "/projects", icon: "rocket", title: "Projects", desc: "7 guided Blue Team and Red Team projects with practical deliverables" },
   { to: "/field-notes", icon: "book", title: "Field Notes", desc: "Save your own findings, lessons and practicals as you progress" },
+  { to: "/soc-analyst", icon: "eye", title: "SOC Analyst Path", desc: "Work an incident from scope and alert triage through recovery and reporting" },
   { to: "/terminal", icon: "terminal", title: "Lab Terminal", desc: "Simulated Kali shell — practice nmap & msfconsole in-browser" },
   { to: "/lab-setup", icon: "server", title: "Virtual Lab", desc: "Build a real isolated lab: Kali + Metasploitable + DVWA" },
   { to: "/labs", icon: "flask", title: "Hands-on Labs", desc: "13 hands-on attack scenarios with steps, MITRE tags & deliverables" },

@@ -11,6 +11,7 @@ import { resources } from "../data/resources.js";
 import { vulnSystems } from "../data/vulnsystems.js";
 import { cheatsheets } from "../data/cheatsheets.js";
 import { projects } from "../data/projects.js";
+import { socPlaybook } from "../data/socPlaybook.js";
 import { reference } from "../data/reference.js";
 import { register, login, logout, authMiddleware } from "../auth.js";
 
@@ -121,6 +122,7 @@ router.get("/tools/:name", (req, res) => {
   res.json(tool);
 });
 
+router.get("/soc-playbook", (_req, res) => res.json(socPlaybook));
 router.get("/networking", (_req, res) => res.json(networking));
 router.get("/labsetup", (_req, res) => res.json(labSetup));
 router.get("/vulnsystems", (_req, res) => res.json({ count: vulnSystems.length, systems: vulnSystems }));
