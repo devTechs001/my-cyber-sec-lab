@@ -10,7 +10,7 @@ const quickLinks = [
   { to: "/lab-setup", icon: "server", title: "Virtual Lab", desc: "Build a real isolated lab: Kali + Metasploitable + DVWA" },
   { to: "/labs", icon: "flask", title: "Hands-on Labs", desc: "13 hands-on attack scenarios with steps, MITRE tags & deliverables" },
   { to: "/lessons", icon: "book", title: "Lessons", desc: "17 modules from networking basics to full pentest reporting" },
-  { to: "/tools", icon: "tools", title: "Tools", desc: "34 tools — Nmap, Burp, NetExec, Volatility & more, with real commands" },
+  { to: "/tools", icon: "tools", title: "Tools", desc: "42 tools with commands and portfolio-ready assessment procedures" },
   { to: "/resources", icon: "link", title: "Resources", desc: "Official downloads, platforms, certs & bug bounty" },
   { to: "/networking", icon: "globe", title: "Networking", desc: "OSI, ports, subnetting, hardening checklist" },
   { to: "/roadmap", icon: "map", title: "Roadmap", desc: "24-week plan to job-ready" },

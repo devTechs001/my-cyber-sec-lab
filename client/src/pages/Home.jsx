@@ -10,7 +10,7 @@ const highlights = [
   { icon: "terminal", title: "Live Web Terminal", text: "Practice Linux + nmap + Metasploit syntax right in your browser — safe simulation." },
   { icon: "server", title: "Virtual Lab Guide", text: "Kali attack box + vulnerable VMs (Metasploitable, DVWA) on an isolated host-only network." },
   { icon: "link", title: "Real Resources", text: "Official links: Kali, VulnHub, TryHackMe, HackTheBox, PortSwigger Academy, certs." },
-  { icon: "tools", title: "34 Tools", text: "Nmap, Burp, Wireshark, Metasploit, BloodHound, Impacket… each with real commands." },
+  { icon: "tools", title: "42 Security Tools", text: "Real commands plus practical, evidence-led procedures for code, cloud, TLS, web and endpoint assessments." },
   { icon: "target", title: "Attacks & Defense", text: "Troubleshooting, WiFi, recon, XSS/SQLi/MITM/DirB — with detection & mitigations." },
   { icon: "globe", title: "Networking Docs", text: "OSI model, ports, subnetting, key protocol flows and a hardening checklist." },
   { icon: "map", title: "24-Week Roadmap", text: "Phase-by-phase plan from beginner to job-ready security professional." },

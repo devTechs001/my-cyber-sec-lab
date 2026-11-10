@@ -609,3 +609,12 @@ body { transition: background 0.3s ease, color 0.3s ease; }
 .mitre-tag { margin: 0.3rem 0 0; font-family: var(--font-mono); font-size: 0.8rem; color: var(--amber); }
 .mitre-tag code { background: var(--code-bg); padding: 0.1rem 0.45rem; border-radius: 5px; }
 @media (max-width: 640px) { .nav-search { max-width: none; } }
+
+/* Practical, report-ready assessment guidance */
+.portfolio-workflow { margin: 1rem 0 1.5rem; border-color: rgba(56, 214, 245, 0.35); }
+.portfolio-workflow ol, .tool-procedure ol { padding-left: 1.35rem; }
+.portfolio-workflow li, .tool-procedure li { margin: 0.45rem 0; color: var(--muted); }
+.portfolio-workflow li strong { color: var(--text); }
+.tool-procedure { margin: 0.8rem 0; border: 1px solid var(--border); border-radius: 9px; padding: 0.7rem 0.85rem; background: var(--panel-2); }
+.tool-procedure summary { color: var(--cyan); cursor: pointer; font-weight: 600; }
+.tool-procedure[open] summary { margin-bottom: 0.6rem; }
