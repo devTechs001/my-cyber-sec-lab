@@ -37,6 +37,7 @@ export const api = {
   lab: (id) => get(`/labs/${id}`),
   tools: () => get("/tools"),
   tool: (name) => get(`/tools/${name}`),
+  socPlaybook: () => get("/soc-playbook"),
   networking: () => get("/networking"),
   roadmap: () => get("/roadmap"),
   labSetup: () => get("/labsetup"),

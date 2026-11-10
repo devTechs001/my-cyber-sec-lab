@@ -17,6 +17,7 @@ const groups = [
     links: [
       { to: "/lessons", label: "Lessons", icon: "book" },
       { to: "/labs", label: "Labs", icon: "flask" },
+      { to: "/soc-analyst", label: "SOC Analyst Path", icon: "eye" },
     ],
   },
   {

@@ -645,3 +645,34 @@ body { transition: background 0.3s ease, color 0.3s ease; }
 .note-delete { color: var(--red); }
 .notes-empty { text-align: center; padding: 2rem; }
 @media (max-width: 640px) { .notes-form-grid { grid-template-columns: 1fr; } .notes-wide { grid-column: auto; } .notes-filters { width: 100%; } .notes-filters input { flex: 1; width: auto; } }
+
+/* End-to-end SOC analyst playbook */
+.soc-page .soc-safety { display: flex; align-items: flex-start; gap: 0.7rem; }
+.soc-page .soc-safety p { margin: 0; }
+.soc-lab { margin: 1rem 0 1.6rem; }
+.soc-section-title, .soc-phase-head { display: flex; align-items: flex-start; gap: 0.8rem; }
+.soc-section-title > .icon, .soc-phase-mark { color: var(--cyan); flex: 0 0 auto; }
+.soc-section-title h3, .soc-phase-head h3 { margin-top: 0; }
+.soc-section-title p, .soc-phase-head p, .soc-scenario { color: var(--muted); }
+.soc-components { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 0.6rem; margin: 1rem 0; }
+.soc-component { display: flex; align-items: flex-start; gap: 0.65rem; border: 1px solid var(--border); border-radius: 9px; padding: 0.7rem; color: var(--muted); background: var(--panel-2); font-size: 0.88rem; }
+.soc-index { color: var(--green); font: 700 0.77rem var(--font-mono); }
+.soc-roadmap-head { display: flex; justify-content: space-between; align-items: end; margin: 1.5rem 0 0.8rem; gap: 1rem; }
+.soc-roadmap-head h3 { margin: 0; }
+.soc-phases { display: grid; gap: 1rem; }
+.soc-phase { min-width: 0; }
+.soc-phase-head { margin-bottom: 0.8rem; }
+.soc-phase-head h3 { font-size: 1.05rem; }
+.soc-phase-head p { margin: 0.2rem 0 0; }
+.soc-phase-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: rgba(56, 214, 245, 0.08); border: 1px solid var(--border); }
+.soc-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 0.7rem 0; }
+.soc-tools > strong { color: var(--muted); font-size: 0.8rem; margin-right: 0.2rem; }
+.soc-subhead { margin: 0.9rem 0 0.35rem; color: var(--text); font-size: 0.94rem; }
+.soc-steps { color: var(--muted); padding-left: 1.35rem; }
+.soc-steps li { margin: 0.45rem 0; }
+.soc-evidence { border-top: 1px solid var(--border); margin-top: 0.9rem; padding-top: 0.7rem; }
+.soc-evidence h4 { display: flex; align-items: center; gap: 0.4rem; margin: 0; color: var(--green); font-size: 0.9rem; }
+.soc-evidence ul { margin-bottom: 0; color: var(--muted); }
+.soc-exercise { margin-top: 1.5rem; }
+.soc-scenario { border-left: 3px solid var(--amber); padding: 0.6rem 0.8rem; background: rgba(255, 200, 87, 0.05); }
+@media (max-width: 640px) { .soc-roadmap-head { align-items: flex-start; flex-direction: column; } }
