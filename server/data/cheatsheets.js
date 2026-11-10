@@ -88,4 +88,24 @@ export const cheatsheets = [
       { title: "Verdict & mapping", commands: ["# document: true positive / benign + evidence", "# map to MITRE ATT&CK: T1566 Phishing, T1204 User Execution, T1071 C2"] },
     ],
   },
+  {
+    id: "osint",
+    title: "OSINT workflow (authorized scope only)",
+    icon: "🛰️",
+    sections: [
+      { title: "People & org", commands: ["theHarvester -d example.com -b all -f report.html   # your domain", "shodan search 'org:YourOrg' | head", "# LinkedIn/Maltego for employees — only with authorization"] },
+      { title: "Infrastructure", commands: ["subfinder -d example.com -silent > subs.txt", "cat subs.txt | httpx -silent -status-code -title", "nmap -sV --top-ports 100 <live-hosts>   # only in-scope hosts"] },
+      { title: "Leaks & exposure", commands: ["# check your own org against public breach data (HaveIBeenPwned API)", "# certificate transparency: crt.sh/?q=%25.example.com"] },
+    ],
+  },
+  {
+    id: "forensics-re",
+    title: "Forensics & reverse engineering",
+    icon: "🧠",
+    sections: [
+      { title: "Memory", commands: ["vol -f memdump.raw windows.pslist", "vol -f memdump.raw windows.netscan", "vol -f memdump.raw windows.malfind"] },
+      { title: "Malware triage", commands: ["sha256sum sample.bin; strings -n 8 sample.bin | grep -iE 'http|mutex'", "r2 -A sample.bin  →  afl (list functions)", "# detonate ONLY in a sandbox VM with no network"] },
+      { title: "Network IOCs", commands: ["tshark -r capture.pcap -Y 'dns' -T fields -e dns.qry.name | sort -u", "tshark -r capture.pcap -Y 'http.request' -T fields -e http.host"] },
+    ],
+  },
 ];
