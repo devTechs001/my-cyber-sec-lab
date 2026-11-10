@@ -63,11 +63,52 @@ router.get("/lessons/:id", (req, res) => {
   res.json(lesson);
 });
 
-router.get("/labs", (_req, res) => res.json({ count: labs.length, labs }));
+
+// ---- MITRE ATT&CK mapping for labs ----
+const LAB_MITRE = {
+  "lab-01-network-discovery": "T1046 Network Service Discovery",
+  "lab-02-web-burp-dvwa": "T1190 Exploit Public-Facing Application",
+  "lab-03-metasploitable": "T1210 Exploitation of Remote Services",
+  "lab-04-wireshark-pcap": "T1040 Network Sniffing (analysis)",
+  "lab-05-password-lab": "T1110 Brute Force",
+  "lab-06-privesc": "T1068 Exploitation for Privilege Escalation",
+  "lab-07-ctf-style": "Full kill chain",
+  "lab-08-terminal-warmup": "T1059 Command & Scripting Interpreter",
+  "lab-09-siem-detection": "TA0043 Detection (blue team)",
+  "lab-10-ad-attack-chain": "T1558 Kerberoasting / T1550 Pass-the-Hash",
+  "lab-11-phishing-triage": "T1566 Phishing (triage)",
+  "lab-12-vuln-management": "T1190 scanning (defense)",
+  "lab-13-wifi-lab": "T1110 / T1557 wireless",
+};
+
+// ---- global search across all content ----
+const SEARCH_INDEX = [
+  ...lessons.map((l) => ({ type: "lesson", id: l.id, title: `${l.order}. ${l.title}`, text: l.summary + " " + l.objectives.join(" "), url: `/lessons/${l.id}` })),
+  ...labs.map((l) => ({ type: "lab", id: l.id, title: l.title, text: l.objective + " " + l.tools.join(" "), url: `/labs/${l.id}` })),
+  ...tools.map((t) => ({ type: "tool", id: t.name, title: t.name, text: t.category + " " + t.description, url: "/tools" })),
+  ...projects.map((p) => ({ type: "project", id: p.id, title: p.title, text: p.role + " " + p.summary, url: "/projects" })),
+  ...cheatsheets.map((c) => ({ type: "cheatsheet", id: c.id, title: c.title, text: c.sections.map((s) => s.commands.join(" ")).join(" "), url: "/cheatsheets" })),
+  ...reference.categories.flatMap((c) =>
+    c.items.map((i) => ({ type: "reference", id: `${c.id}/${i.title}`, title: `${c.icon} ${i.title}`, text: i.what + " " + (i.commands || []).join(" "), url: "/reference" }))
+  ),
+];
+router.get("/search", (req, res) => {
+  const q = String(req.query.q || "").toLowerCase().trim();
+  if (q.length < 2) return res.json({ q, count: 0, results: [] });
+  const results = SEARCH_INDEX
+    .filter((r) => (r.title + " " + r.text).toLowerCase().includes(q))
+    .slice(0, 12)
+    .map(({ type, id, title, url }) => ({ type, id, title, url }));
+  res.json({ q, count: results.length, results });
+});
+
+router.get("/labs", (_req, res) =>
+  res.json({ count: labs.length, labs: labs.map((l) => ({ ...l, mitre: LAB_MITRE[l.id] || null })) })
+);
 router.get("/labs/:id", (req, res) => {
   const lab = labs.find((l) => l.id === req.params.id);
   if (!lab) return res.status(404).json({ error: "lab not found" });
-  res.json(lab);
+  res.json({ ...lab, mitre: LAB_MITRE[lab.id] || null });
 });
 
 router.get("/tools", (_req, res) => {

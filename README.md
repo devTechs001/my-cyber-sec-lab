@@ -27,7 +27,6 @@ my-cyber-sec-lab/
 │   ├── processes.md        # pentest methodology + rules of engagement
 │   └── report-template.md  # professional pentest report template
 └── deploy/
-    ├── netlify.toml        # frontend deploy config (SPA + /api proxy)
     ├── render.yaml         # backend deploy blueprint
     └── DEPLOY.md           # step-by-step deployment guide
 ```
@@ -84,7 +83,7 @@ python3 log_analyzer.py auth.log.sample                # failed-login report
 
 | Part | Platform | Config | Steps |
 |---|---|---|---|
-| Frontend | **Netlify** | `deploy/netlify.toml` | Import repo → base `client`, build `npm run build`, publish `dist` |
+| Frontend | **Netlify** | `netlify.toml` (repo root) | Import repo → base `client`, build `npm run build`, publish `dist` |
 | Backend API | **Render** | `deploy/render.yaml` | New Web Service → root `server`, start `npm start`; health: `/api/health` |
 
 Full walkthrough: [`deploy/DEPLOY.md`](deploy/DEPLOY.md)

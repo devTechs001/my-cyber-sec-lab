@@ -22,6 +22,7 @@ export default function LabDetail() {
           <span className="eyebrow">{lab.difficulty}</span>
           <h2>{lab.title}</h2>
           <p className="section-sub">{lab.objective}</p>
+          {lab.mitre && <p className="mitre-tag">🎯 MITRE ATT&CK: <code>{lab.mitre}</code></p>}
         </div>
       </div>
 
