@@ -254,6 +254,52 @@ export function runCommand(session, raw) {
     case "about":
       ["Cyber EC Lab — simulated terminal.", "Nothing here executes real commands; it trains syntax against a fake", "isolated lab network (192.168.56.0/24). For real practice use your own", "Kali VM — see the Lab Setup page. Always stay authorized."].forEach((l) => out(l));
       break;
+    case "gobuster": case "ffuf": case "dirb": {
+      if ((args.join(" ") + " ").includes("192.168.56.102") || args.includes("dir")) {
+        ["/# ---- gobuster dir (simulated, lab target) ----",
+         "/.git/            (Status: 301)", "/admin/           (Status: 301)",
+         "/backup.zip       (Status: 200)  [size: 4.2 KB]", "/config.php.bak   (Status: 200)",
+         "/uploads/         (Status: 301)", "/robots.txt       (Status: 200)"].forEach((l) => out(l));
+      } else out("usage: gobuster dir -u http://192.168.56.102 -w common.txt  (lab target)", "err");
+      break;
+    }
+    case "sqlmap": {
+      if (!input.includes("192.168.56.102")) { out("usage: sqlmap -u 'http://192.168.56.102/sqli/?id=1' --dbs   (lab only)", "err"); break; }
+      ["[*] testing GET parameter 'id'", "[+] 'id' is vulnerable — back-end DBMS: MySQL 5.0",
+       "available databases [2]:", "[*] dvwa", "[*] information_schema",
+       "# then: sqlmap -u '...' -D dvwa -T users --dump  → admin hash: 5f4dcc3b5aa765d61d8327deb882cf99 (md5 of 'password')"].forEach((l) => out(l));
+      break;
+    }
+    case "hydra": {
+      if (!input.includes("192.168.56.101")) { out("usage: hydra -l msfadmin -P words.txt 192.168.56.101 ssh  (lab only)", "err"); break; }
+      ["[22][ssh] host: 192.168.56.101   login: msfadmin   password: msfadmin",
+       "1 of 1 target successfully completed, 1 valid password found"].forEach((l) => out(l));
+      break;
+    }
+    case "john": case "hashcat": {
+      ["Loaded 1 password hash (md5crypt)", "'password' → 5f4dcc3b5aa765d61d8327deb882cf99  [CRACKED in 0.4s]",
+       "# rule: never crack real hashes — own/authorized lab hashes only"].forEach((l) => out(l));
+      break;
+    }
+    case "enum4linux": case "crackmapexec": case "nmap-ad": {
+      ["//192.168.56.10  SAM SAMR (simulated lab DC output)", "Users: Administrator, svc-iis, labuser", "Shares: ADMIN$, C$, IPC$, wwwroot"].forEach((l) => out(l));
+      break;
+    }
+    case "nikto": case "wpscan": {
+      ["+ Server: Apache/2.2.8 (Ubuntu) — outdated!", "+ /admin/: directory exists (lab)", "+ Retrieved x-powered-by header: PHP/5.2.4 — outdated!"].forEach((l) => out(l));
+      break;
+    }
+    case "mission": {
+      ["🎯 GUIDED MISSION — 'Operation Lab Breach' (all targets are the fake lab VMs):",
+       "  Stage 1  RECON      : nmap -sV 192.168.56.101   → find vsftpd 2.3.4",
+       "  Stage 2  WEB ENUM   : gobuster dir -u http://192.168.56.102 ... → /admin/",
+       "  Stage 3  EXPLOIT    : msfconsole → use exploit/unix/ftp/vsftpd_234_backdoor",
+       "                       → set RHOSTS 192.168.56.101 → exploit  → root shell",
+       "  Stage 4  WEB ATTACK : sqlmap -u 'http://192.168.56.102/sqli/?id=1' -D dvwa -T users --dump",
+       "  Stage 5  FLAG       : cat /lab/README.txt → FLAG{lab_breach_complete}",
+       "Type the commands stage by stage — each is simulated but teaches the real flow."].forEach((l) => out(l));
+      break;
+    }
     case "exit": out("Use the navbar to explore lessons, labs and tools. Session stays open 🙂"); break;
     default:
       out(`${cmd}: command not found — type 'help'`, "err");

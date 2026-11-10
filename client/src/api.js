@@ -46,6 +46,8 @@ export const api = {
   project: (id) => get(`/projects/${id}`),
   resources: () => get("/resources"),
   reference: (category) => get(category ? `/reference?category=${encodeURIComponent(category)}` : "/reference"),
+  search: (q) => get(`/search?q=${encodeURIComponent(q)}`),
+  search: (q) => get(`/search?q=${encodeURIComponent(q)}`),
   dashboard: () => get("/dashboard"),
   progress: () => get("/progress"),
   setProgress: (id, done) => post(`/progress/${id}`, { done }),
