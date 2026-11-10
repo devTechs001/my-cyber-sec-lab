@@ -29,6 +29,7 @@ html, body {
 }
 
 .app-shell { min-height: 100vh; display: flex; flex-direction: column; }
+.app-body { display: flex; align-items: flex-start; flex: 1; width: 100%; }
 .app-main { flex: 1; width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 1.25rem 3rem; }
 
 a { color: var(--cyan); text-decoration: none; }
@@ -343,7 +344,7 @@ h3 { font-size: 1.1rem; }
 .stat-pct { font-family: var(--font-mono); font-size: 0.78rem; color: var(--cyan); }
 .stat-link { font-family: var(--font-mono); font-size: 0.8rem; margin-top: auto; }
 .progress-bar {
-  height: 8px; background: #0a101c; border: 1px solid var(--border);
+  height: 8px; background: var(--code-bg); border: 1px solid var(--border);
   border-radius: 999px; overflow: hidden; margin-top: 0.3rem;
 }
 .progress-fill { height: 100%; background: var(--grad); border-radius: 999px; transition: width 0.4s ease; }
@@ -387,7 +388,7 @@ h3 { font-size: 1.1rem; }
   --bg: #f2f6fb; --bg-soft: #e8eef7; --panel: #ffffff; --panel-2: #eef3fa;
   --border: #d4deeb; --text: #14243a; --muted: #51617a;
   --green: #0d9d6c; --cyan: #0891b2; --amber: #b45309; --red: #dc2645;
-  --nav-bg: rgba(242, 246, 251, 0.88); --shadow: rgba(20, 36, 58, 0.12);
+  --nav-bg: rgba(242, 246, 251, 0.88); --shadow: rgba(20, 36, 58, 0.12); --code-bg: #e2e9f4;
 }
 html { scroll-behavior: smooth; }
 body { transition: background 0.3s ease, color 0.3s ease; }
