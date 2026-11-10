@@ -33,6 +33,19 @@ app.use(
 app.use(express.json());
 app.use(morgan("dev"));
 
+// Security headers (mirrors netlify.toml for the full-stack/self-hosted mode)
+app.use((_req, res, next) => {
+  res.setHeader("X-Frame-Options", "DENY");
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://*.onrender.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+  );
+  next();
+});
+
 app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", service: "cyber-ec-lab-api", time: new Date().toISOString() });
 });

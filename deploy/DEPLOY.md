@@ -1,5 +1,9 @@
 # Deployment Guide — Netlify (frontend) + Render (backend)
 
+> The Netlify config lives at the **repo root** (`netlify.toml`) — Netlify does not
+> read config files from subdirectories like `deploy/`. It includes the SPA fallback,
+> the `/api/*` proxy to Render, and security headers (CSP, X-Frame-Options, …).
+
 ## Architecture
 
 ```
