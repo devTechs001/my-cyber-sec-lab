@@ -9,6 +9,7 @@ const groups = [
     links: [
       { to: "/dashboard", label: "Dashboard", icon: "dashboard" },
       { to: "/projects", label: "Projects", icon: "rocket" },
+      { to: "/field-notes", label: "Field Notes", icon: "book" },
     ],
   },
   {

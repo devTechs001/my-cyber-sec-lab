@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { api } from "../api.js";
+import Icon from "../components/Icon.jsx";
 
 export default function LabDetail() {
   const { id } = useParams();
@@ -22,29 +23,29 @@ export default function LabDetail() {
           <span className="eyebrow">{lab.difficulty}</span>
           <h2>{lab.title}</h2>
           <p className="section-sub">{lab.objective}</p>
-          {lab.mitre && <p className="mitre-tag">🎯 MITRE ATT&CK: <code>{lab.mitre}</code></p>}
+          {lab.mitre && <p className="mitre-tag"><Icon name="target" size={14} /> MITRE ATT&CK: <code>{lab.mitre}</code></p>}
         </div>
       </div>
 
       <div className="detail-grid">
         <div className="panel">
-          <h3>🎯 Target</h3>
+          <h3><Icon name="target" size={18} /> Target</h3>
           <p>{lab.target}</p>
-          <h3>🧰 Tools</h3>
+          <h3><Icon name="tools" size={18} /> Tools</h3>
           <div className="lab-tools">
             {lab.tools.map((t) => <span className="tool-chip small" key={t}>{t}</span>)}
           </div>
         </div>
         <div className="panel">
-          <h3>📦 Deliverable</h3>
+          <h3><Icon name="file" size={18} /> Deliverable</h3>
           <p>{lab.deliverable}</p>
-          <h3>⚖️ Safety</h3>
+          <h3><Icon name="shield" size={18} /> Safety</h3>
           <p className="safety-text">{lab.safety}</p>
         </div>
       </div>
 
       <div className="panel">
-        <h3>👣 Steps</h3>
+        <h3><Icon name="list" size={18} /> Steps</h3>
         <ol className="steps">{lab.steps.map((s, i) => <li key={i}>{s}</li>)}</ol>
       </div>
     </section>

@@ -4,7 +4,7 @@ import SectionHeading from "../components/SectionHeading.jsx";
 
 const BOOT = [
   { text: "Cyber EC Lab — simulated Kali Linux terminal", cls: "out" },
-  { text: "⚠️  SIMULATION ONLY: no real commands execute. Practice syntax against the fake lab network 192.168.56.0/24.", cls: "warn" },
+  { text: "SIMULATION ONLY: no real commands execute. Practice syntax against the fake lab network 192.168.56.0/24.", cls: "warn" },
   { text: "Targets: 192.168.56.101 (Metasploitable2) · 192.168.56.102 (DVWA) · type 'help' to begin.", cls: "out" },
   { text: "", cls: "out" },
 ];

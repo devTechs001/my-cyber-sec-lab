@@ -49,7 +49,7 @@ export default function Login() {
         <label className="auth-label">Password
           <input className="auth-input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} autoComplete={mode === "login" ? "current-password" : "new-password"} />
         </label>
-        {error && <p className="error auth-error">⚠️ {error}</p>}
+        {error && <p className="error auth-error"><Icon name="alert" size={16} /> {error}</p>}
         <button className="btn btn-primary auth-submit" disabled={busy}>
           <Icon name="shield" size={16} /> {busy ? "…" : mode === "login" ? "Sign in" : "Create account"}
         </button>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../api.js";
 import SectionHeading from "../components/SectionHeading.jsx";
+import Icon from "../components/Icon.jsx";
 
 export default function Resources() {
   const [data, setData] = useState(null);
@@ -26,7 +27,7 @@ export default function Resources() {
           <div className="resource-list">
             {cat.items.map((r) => (
               <a className="resource-item" key={r.name} href={r.url} target="_blank" rel="noreferrer">
-                <span className="resource-name">🔗 {r.name}</span>
+                <span className="resource-name"><Icon name="link" size={15} /> {r.name}</span>
                 <span className="resource-desc">{r.desc}</span>
               </a>
             ))}
@@ -34,7 +35,7 @@ export default function Resources() {
         </div>
       ))}
       <div className="ethics-banner">
-        <h3>⚖️ Remember</h3>
+        <h3><Icon name="shield" size={18} /> Remember</h3>
         <p>Downloads like Metasploitable/DVWA are intentionally vulnerable — keep them on a host-only network. For remote practice use TryHackMe, HackTheBox, PortSwigger Academy. Never test systems you don't own.</p>
       </div>
     </section>

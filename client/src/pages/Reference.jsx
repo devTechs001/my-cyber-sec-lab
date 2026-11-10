@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../api.js";
 import SectionHeading from "../components/SectionHeading.jsx";
 import CodeBlock from "../components/CodeBlock.jsx";
+import Icon from "../components/Icon.jsx";
 
 export default function Reference() {
   const [data, setData] = useState(null);
@@ -23,14 +24,14 @@ export default function Reference() {
       />
 
       <div className="filter-bar">
-        <button className={cat === null ? "filter-btn active" : "filter-btn"} onClick={() => setCat(null)}>📚 All</button>
+        <button className={cat === null ? "filter-btn active" : "filter-btn"} onClick={() => setCat(null)}><Icon name="book" size={15} /> All</button>
         {data?.categories.map((c) => (
           <button
             key={c.id}
             className={cat === c.id ? "filter-btn active" : "filter-btn"}
             onClick={() => setCat(c.id)}
           >
-            {c.icon} {c.title} ({c.items})
+            <Icon name={c.icon} size={16} /> {c.title} ({c.items})
           </button>
         ))}
       </div>
@@ -38,17 +39,17 @@ export default function Reference() {
       {!data && <p>Loading…</p>}
       {data?.sections.map((s, si) => (
         <div className="panel pop" style={{ animationDelay: `${si * 60}ms` }} key={s.id}>
-          <h3>{s.icon} {s.title}</h3>
+          <h3><Icon name={s.icon} size={19} /> {s.title}</h3>
           <div className="ref-grid">
             {s.items.map((item, i) => (
               <div className="ref-card" key={i}>
                 <h4>{item.title}</h4>
                 <p>{item.what}</p>
                 {item.commands && <CodeBlock title="Commands (lab / authorized only)" lines={item.commands} />}
-                {item.detect && <p className="ref-line"><b>🔎 Detect:</b> {item.detect}</p>}
-                {item.protect && <p className="ref-line"><b>🛡️ Protect:</b> {item.protect}</p>}
-                {item.fix && <p className="ref-line"><b>🔧 Fix:</b> {item.fix}</p>}
-                {item.mitre && <p className="ref-line mitre">🎯 MITRE ATT&CK: {item.mitre}</p>}
+                {item.detect && <p className="ref-line"><b><Icon name="eye" size={14} /> Detect:</b> {item.detect}</p>}
+                {item.protect && <p className="ref-line"><b><Icon name="shield" size={14} /> Protect:</b> {item.protect}</p>}
+                {item.fix && <p className="ref-line"><b><Icon name="tools" size={14} /> Fix:</b> {item.fix}</p>}
+                {item.mitre && <p className="ref-line mitre"><Icon name="target" size={14} /> MITRE ATT&CK: {item.mitre}</p>}
               </div>
             ))}
           </div>

@@ -3,7 +3,7 @@ export const tools = [
   {
     name: "Nmap",
     category: "Scanning & Enumeration",
-    icon: "📡",
+    icon: "target",
     description: "Network discovery and security auditing: host discovery, port scanning, service/version and OS detection, NSE scripting.",
     install: "sudo apt install nmap   |   brew install nmap",
     commands: [
@@ -18,7 +18,7 @@ export const tools = [
   {
     name: "Burp Suite",
     category: "Web Application Testing",
-    icon: "🕷️",
+    icon: "network",
     description: "Intercepting proxy for web pentesting: site map, Repeater, Intruder, Scanner (Pro).",
     install: "portswigger.net/burp (Community free)",
     commands: [
@@ -33,7 +33,7 @@ export const tools = [
   {
     name: "Wireshark / tshark",
     category: "Traffic Analysis",
-    icon: "🦈",
+    icon: "eye",
     description: "Packet capture and protocol analysis: display filters, TCP streams, TLS/DNS/HTTP inspection.",
     install: "sudo apt install wireshark tshark",
     commands: [
@@ -49,7 +49,7 @@ export const tools = [
   {
     name: "Metasploit Framework",
     category: "Exploitation",
-    icon: "💥",
+    icon: "bolt",
     description: "Exploit framework: search, configure, exploit, post-exploitation with Meterpreter.",
     install: "Preinstalled on Kali — docs.rapid7.com/metasploit",
     commands: [
@@ -66,7 +66,7 @@ export const tools = [
   {
     name: "Hydra",
     category: "Password Attacks",
-    icon: "🐉",
+    icon: "target",
     description: "Online login brute-forcer for 50+ protocols (SSH, RDP, HTTP forms…).",
     install: "sudo apt install hydra",
     commands: [
@@ -79,7 +79,7 @@ export const tools = [
   {
     name: "John the Ripper / hashcat",
     category: "Password Attacks",
-    icon: "🔑",
+    icon: "shield",
     description: "Offline hash cracking: wordlists + rules (John), GPU-accelerated (hashcat).",
     install: "sudo apt install john hashcat",
     commands: [
@@ -94,7 +94,7 @@ export const tools = [
   {
     name: "Gobuster",
     category: "Web Enumeration",
-    icon: "📂",
+    icon: "folder",
     description: "Brute-forces directories, files, DNS subdomains and vhosts.",
     install: "sudo apt install gobuster",
     commands: [
@@ -107,7 +107,7 @@ export const tools = [
   {
     name: "SQLmap",
     category: "Web Application Testing",
-    icon: "💉",
+    icon: "target",
     description: "Automates SQL injection detection and database exploitation.",
     install: "sudo apt install sqlmap",
     commands: [
@@ -121,7 +121,7 @@ export const tools = [
   {
     name: "Netcat",
     category: "Networking / Shells",
-    icon: "🔌",
+    icon: "bolt",
     description: "TCP/UDP Swiss-army knife: port checks, banner grabbing, file transfer, lab shells.",
     install: "sudo apt install netcat-openbsd",
     commands: [
@@ -135,7 +135,7 @@ export const tools = [
   {
     name: "Aircrack-ng",
     category: "Wireless",
-    icon: "📶",
+    icon: "globe",
     description: "Wireless auditing: monitor mode, WPA handshake capture/analysis (your own AP only).",
     install: "sudo apt install aircrack-ng",
     commands: [
@@ -149,7 +149,7 @@ export const tools = [
   {
     name: "OWASP ZAP",
     category: "Web Application Testing",
-    icon: "⚡",
+    icon: "bolt",
     description: "Free automated web scanner + intercepting proxy (Burp alternative).",
     install: "sudo apt install zaproxy  |  zaproxy.org/download",
     commands: [
@@ -162,7 +162,7 @@ export const tools = [
   {
     name: "LinPEAS / WinPEAS",
     category: "Privilege Escalation",
-    icon: "⬆️",
+    icon: "chart",
     description: "Enumeration scripts highlighting privesc vectors on Linux/Windows.",
     install: "github.com/peass-ng/PEASS-ng",
     commands: [
@@ -176,7 +176,7 @@ export const tools = [
   {
     name: "BloodHound + SharpHound",
     category: "Active Directory",
-    icon: "🩸",
+    icon: "target",
     description: "Maps AD attack paths: collect with SharpHound, analyze graph in BloodHound GUI.",
     install: "github.com/BloodHoundAD/BloodHound",
     commands: [
@@ -190,7 +190,7 @@ export const tools = [
   {
     name: "Impacket",
     category: "Active Directory",
-    icon: "🧰",
+    icon: "tools",
     description: "Python toolkit for Windows protocols: SMB, Kerberos roasting, remote execution, DCSync.",
     install: "pipx install impacket  (or sudo apt install python3-impacket)",
     commands: [
@@ -204,7 +204,7 @@ export const tools = [
   {
     name: "Rubeus",
     category: "Active Directory",
-    icon: "🎫",
+    icon: "file",
     description: "C# toolset for Kerberos ticket abuse: roasting, forging, extraction (Windows).",
     install: "github.com/GhostPack/Rubeus (prebuilt binary)",
     commands: [
@@ -217,7 +217,7 @@ export const tools = [
   {
     name: "Responder",
     category: "Active Directory",
-    icon: "📡",
+    icon: "target",
     description: "LLMNR/NBT-NS/mDNS poisoner that captures NetNTLM hashes on the local segment.",
     install: "sudo apt install responder",
     commands: [
@@ -229,7 +229,7 @@ export const tools = [
   {
     name: "WPScan",
     category: "Web Application Testing",
-    icon: "📝",
+    icon: "file",
     description: "WordPress vulnerability scanner: plugins, themes, users, misconfigs.",
     install: "sudo apt install wpscan",
     commands: [
@@ -241,7 +241,7 @@ export const tools = [
   {
     name: "Nikto",
     category: "Web Application Testing",
-    icon: "🔍",
+    icon: "eye",
     description: "Web server scanner: outdated versions, dangerous files, misconfigurations.",
     install: "sudo apt install nikto",
     commands: [
@@ -253,7 +253,7 @@ export const tools = [
   {
     name: "OpenVAS / Greenbone",
     category: "Vulnerability Management",
-    icon: "🩹",
+    icon: "shield",
     description: "Full vulnerability scanner (Nessus alternative) with web UI; feeds DefectDojo.",
     install: "sudo apt install greenbone-feed-sync; see greenbone.net — or Kali package gvm",
     commands: [
@@ -266,7 +266,7 @@ export const tools = [
   {
     name: "Splunk / Wazuh (SIEM)",
     category: "Blue Team / SIEM",
-    icon: "📊",
+    icon: "chart",
     description: "SIEM platforms: ingest logs, write detections (SPL/KQL), dashboards, alerts.",
     install: "splunk.com (free 500MB/day) · wazuh.com (open source)",
     commands: [
@@ -280,7 +280,7 @@ export const tools = [
   {
     name: "Zeek / Suricata",
     category: "Blue Team / Network Monitoring",
-    icon: "🛰️",
+    icon: "globe",
     description: "Network traffic analysis (Zeek logs) and IDS/IPS (Suricata) — feed the SIEM.",
     install: "sudo apt install zeek suricata",
     commands: [
@@ -294,7 +294,7 @@ export const tools = [
   {
     name: "GoPhish / Atomic Red Team / Sigma",
     category: "Blue Team / Detection Testing",
-    icon: "🎣",
+    icon: "target",
     description: "GoPhish: phishing simulation (authorized). Atomic Red Team + Sigma: generate attack activity and validate detections.",
     install: "github.com/gophish/gophish · github.com/redcanaryco/atomic-red-team · sigmahq.io",
     commands: [
@@ -304,5 +304,322 @@ export const tools = [
       "sigma convert -t splunk rule.yml >> splunk-detections.conf   # lab SIEM",
     ],
     safety: "Phishing sims only with written authorization; Atomic tests only on lab VMs.",
+  },
+  {
+    name: "NetExec (CrackMapExec)",
+    category: "Active Directory",
+    icon: "network",
+    description: "Post-exploitation Swiss-army for SMB/WinRM/LDAP/RDP — enumeration, cred spraying, command exec on lab domains.",
+    install: "pipx install netexec",
+    commands: [
+      "nxc smb 192.168.56.10 -u labuser -p Passw0rd --shares          # lab DC",
+      "nxc smb 192.168.56.0/24 -u admin -H <NTLM> --local-auth        # pass-the-hash sweep (lab)",
+      "nxc smb 192.168.56.10 -u svc -p Passw0rd -x 'whoami'           # remote command (lab)",
+      "nxc ldap 192.168.56.10 -u labuser -p Passw0rd --bloodhound -c All   # lab",
+    ],
+    safety: "Lab domain only. Credential attacks on real networks without authorization are crimes.",
+  },
+  {
+    name: "Mimikatz",
+    category: "Active Directory",
+    icon: "eye",
+    description: "Extracts credentials from Windows LSASS memory (lab VMs only): sekurlsa::logonpasswords, lsadump::dcsync.",
+    install: "Preinstalled on Kali — github.com/gentilkiwi/mimikatz",
+    commands: [
+      "# on a lab Windows VM (admin):",
+      "mimikatz.exe", "privilege::debug", "sekurlsa::logonpasswords   # dump logon creds (lab)",
+      "lsadump::dcsync /domain:lab.local /user:Administrator   # DCSync (lab DC)",
+    ],
+    safety: "Lab VMs only — mimikatz on real endpoints is a serious crime.",
+  },
+  {
+    name: "Chisel / Ligolo-ng",
+    category: "Tunneling / Pivoting",
+    icon: "globe",
+    description: "Pivot through compromised lab hosts: SOCKS proxy or full L3 tunnel to reach isolated segments.",
+    install: "github.com/jpillora/chisel · github.com/nicocha30/ligolo-ng",
+    commands: [
+      "# attacker (Kali): chisel server -p 8000 --reverse",
+      "# on lab pivot host: chisel client 192.168.56.100:8000 R:socks   # lab only",
+      "# then: proxychains nmap -sT 10.10.10.0/24   through the tunnel",
+    ],
+    safety: "Only networks you own/authorized.",
+  },
+  {
+    name: "Amass / Subfinder",
+    category: "Reconnaissance / OSINT",
+    icon: "globe",
+    description: "Subdomain enumeration from passive sources (CT logs, APIs) — great first step on authorized domains.",
+    install: "sudo apt install amass subfinder",
+    commands: [
+      "subfinder -d example.com -silent | tee subs.txt      # YOUR domain only",
+      "amass enum -passive -d example.com -o amass.txt",
+      "cat subs.txt | httpx -silent -status-code            # which are alive",
+    ],
+    safety: "Only domains you own or are authorized to test.",
+  },
+  {
+    name: "theHarvester",
+    category: "Reconnaissance / OSINT",
+    icon: "chart",
+    description: "Harvests emails, subdomains, hosts, employee names from public sources for your own org's assessments.",
+    install: "sudo apt install theharvester",
+    commands: [
+      "theHarvester -d example.com -b all -f osint.html   # YOUR domain",
+      "theHarvester -d example.com -b linkedin",
+    ],
+    safety: "Authorized scope only — scraping/OSINT on others can violate ToS and laws.",
+  },
+  {
+    name: "Shodan CLI",
+    category: "Reconnaissance / OSINT",
+    icon: "eye",
+    description: "Search engine for internet-connected devices — find your own exposed services before attackers do.",
+    install: "pip install shodan && shodan init <API_KEY>",
+    commands: [
+      "shodan search 'org:\"Your Org\"'   # your own org",
+      "shodan host <your-public-ip>            # your own IP",
+      "shodan search 'apache 2.4.7' --fields ip_str,port,org   # research only",
+    ],
+    safety: "Query your own org/IPs; never probe others' devices.",
+  },
+  {
+    name: "CyberChef",
+    category: "Forensics / Analysis",
+    icon: "tools",
+    description: "Web-based 'cyber Swiss army knife': decode/encode, hashes, extract IOCs, parse binaries — run locally.",
+    install: "gchq.github.io/CyberChef (or local: docker run -p 8000:8000 remnux/cyberchef)",
+    commands: [
+      "# recipes: From Base64 → Extract URLs → Defang → SHA256",
+      "# use it to decode phishing payloads, JWTs, malware config blobs (lab samples)",
+    ],
+    safety: "Analyze only samples you're authorized to possess.",
+  },
+  {
+    name: "Volatility 3 / Rekall",
+    category: "Forensics / Memory",
+    icon: "cpu",
+    description: "Memory forensics: extract processes, network connections, injected code from RAM images of lab VMs.",
+    install: "pip install volatility3",
+    commands: [
+      "# on a lab memory capture:",
+      "vol -f memdump.raw windows.info",
+      "vol -f memdump.raw windows.pslist      # running processes",
+      "vol -f memdump.raw windows.netscan     # network connections",
+      "vol -f memdump.raw windows.malfind     # injected code indicators",
+    ],
+    safety: "Only memory images from systems you own/authorized.",
+  },
+  {
+    name: "Ghidra / radare2",
+    category: "Reverse Engineering",
+    icon: "cpu",
+    description: "Disassemble and decompile malware samples (lab-only) to understand behavior and extract IOCs.",
+    install: "sudo apt install ghidra radare2  (or ghidra-sre.org)",
+    commands: [
+      "r2 -A suspicious.bin          # analyze binary (lab sample)",
+      "r2 -c 'afl' suspicious.bin    # list functions",
+      "ghidraRun                     # GUI decompiler: File → Import → auto-analyze",
+    ],
+    safety: "Only malware samples you're authorized to analyze, in a sandbox VM.",
+  },
+  {
+    name: "Binwalk",
+    category: "Forensics / Firmware",
+    icon: "server",
+    description: "Firmware analysis: extract embedded filesystems and files from router/IoT firmware images.",
+    install: "sudo apt install binwalk",
+    commands: [
+      "binwalk firmware.bin                    # signature scan",
+      "binwalk -e firmware.bin                 # extract embedded files (lab image)",
+      "binwalk -E -M firmware.bin              # entropy graph + recursive extract",
+    ],
+    safety: "Only firmware images you own or are authorized to analyze.",
+  },
+  {
+    name: "SecLists",
+    category: "Wordlists / Payloads",
+    icon: "book",
+    description: "The standard collection of wordlists (users, passwords, dirs, fuzzing, LFI/XSS payloads) used by every tool above.",
+    install: "sudo apt install seclists  →  /usr/share/seclists/",
+    commands: [
+      "/usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt",
+      "/usr/share/seclists/Discovery/Web-Content/common.txt   # gobuster/ffuf",
+      "/usr/share/seclists/Passwords/Leaked-Passwords/rockyou.txt",
+      "/usr/share/seclists/Fuzzing/LFI/LFI-Jhaddix.txt        # LFI payloads",
+    ],
+    safety: "Wordlists are dual-use — use only on authorized targets.",
+  },
+  {
+    name: "PayloadsAllTheThings",
+    category: "Payloads / Cheatsheets",
+    icon: "link",
+    description: "Massive public collection of payloads & bypass techniques for web, AD, cloud — ideal for lab practice.",
+    install: "git clone github.com/swisskyrepo/PayloadsAllTheThings",
+    commands: [
+      "cd PayloadsAllTheThings && grep -ri 'log poisoning' .",
+      "# e.g. Web Attack/LFI, SQL Injection, Upload Bypass, JWT attacks sections",
+    ],
+    safety: "Reference only — deploy payloads solely against authorized lab targets.",
+  },
+  {
+    name: "Trivy",
+    category: "Cloud & Container Security",
+    icon: "server",
+    description: "Scan container images and source trees for known CVEs, exposed secrets, and risky configuration; use in CI before release.",
+    install: "Install from aquasecurity.github.io/trivy or use the official container image.",
+    commands: [
+      "trivy image --scanners vuln,secret,misconfig --severity HIGH,CRITICAL nginx:1.25   # public demo image; inspect before use",
+      "trivy fs --scanners vuln,secret,misconfig ./sample-app --format json -o trivy-report.json",
+      "trivy config --severity HIGH,CRITICAL ./infra/   # IaC checks",
+    ],
+    procedure: [
+      "Confirm image/repository ownership and record the immutable image digest or commit hash.",
+      "Run the filesystem scan first; save JSON output and note scanner/database versions.",
+      "Validate each finding against the package lockfile or Dockerfile; discard false positives with a written reason.",
+      "Prioritize internet-exposed critical issues, pin/fix the dependency, rebuild, and rescan to prove closure.",
+      "Portfolio evidence: sanitized before/after report, fixed commit, and a CI gate screenshot — never publish secrets or private image names.",
+    ],
+    safety: "Scan only images/repos you own or have written permission to assess; do not pull untrusted images onto a production host.",
+  },
+  {
+    name: "Semgrep",
+    category: "Secure Code Review",
+    icon: "eye",
+    description: "Static analysis for insecure patterns across application code, with language-aware rules and CI support.",
+    install: "python3 -m pip install semgrep  (or use the official Semgrep CLI install guide)",
+    commands: [
+      "semgrep scan --config auto --json --output semgrep.json ./sample-app",
+      "semgrep scan --config p/owasp-top-ten ./sample-app   # rule pack; review applicability",
+      "semgrep scan --config p/secrets --error ./sample-app   # local repo only",
+    ],
+    procedure: [
+      "Choose a training app or your own repository; pin the commit SHA so results are reproducible.",
+      "Run the baseline scan and capture rule ID, file, line, and sanitized code context for each candidate.",
+      "Manually verify reachability and user-controlled input; label false positives with a rationale.",
+      "Fix one demonstrable issue, add a regression test, rerun the same rules, and compare results.",
+      "Portfolio evidence: finding-to-fix table, test diff, and sanitized JSON/HTML output.",
+    ],
+    safety: "Use on code you are authorized to review; do not upload proprietary source to a hosted service without approval.",
+  },
+  {
+    name: "Gitleaks",
+    category: "Secure Code Review",
+    icon: "shield",
+    description: "Detect credentials and tokens accidentally committed to Git history; supports pre-commit and CI checks.",
+    install: "Install with the official Gitleaks release or package manager.",
+    commands: [
+      "gitleaks git --redact --report-format json --report-path gitleaks.json .",
+      "gitleaks dir --redact --report-path working-tree-secrets.json ./sample-app",
+      "gitleaks protect --staged --redact   # pre-commit staged changes",
+    ],
+    procedure: [
+      "Run on a local training repo and keep reports private because detections can contain credential fragments.",
+      "For every candidate, record file/commit and secret type only; never paste the secret into a portfolio.",
+      "If a real secret is found, revoke/rotate it first; removing it from Git history alone is not sufficient.",
+      "Add a safe placeholder to the repo, configure a narrowly scoped allowlist only when justified, and rerun.",
+      "Portfolio evidence: redacted finding count, rotation/remediation checklist, and passing pre-commit/CI result.",
+    ],
+    safety: "Only scan repositories you own or are authorized to inspect. Protect reports and rotate any exposed credential immediately.",
+  },
+  {
+    name: "testssl.sh",
+    category: "Web & TLS Assessment",
+    icon: "shield",
+    description: "Audits TLS versions, cipher suites, certificate chain, and common TLS configuration weaknesses.",
+    install: "git clone https://github.com/testssl/testssl.sh.git  (official project)",
+    commands: [
+      "./testssl.sh --fast --jsonfile-pretty tls-report.json localhost:8443   # local TLS lab",
+      "./testssl.sh --protocols --server-preference localhost:8443",
+      "openssl s_client -connect localhost:8443 -servername localhost -showcerts </dev/null",
+    ],
+    procedure: [
+      "Confirm the host and port are in the written scope; start with a local TLS test service.",
+      "Run the fast profile, record tool version, timestamp, certificate expiry, and negotiated protocol.",
+      "Validate material findings with OpenSSL and distinguish server configuration from client-side limitations.",
+      "Recommend supported TLS versions and modern cipher configuration; avoid changing a live service during testing.",
+      "Portfolio evidence: sanitized JSON excerpt, certificate-chain diagram, prioritized remediation, and retest result.",
+    ],
+    safety: "Test only endpoints you own or have explicit authorization to assess; keep scan rates modest.",
+  },
+  {
+    name: "OWASP ZAP",
+    category: "Web Application Testing",
+    icon: "shield",
+    description: "Intercepting proxy and passive web scanner. Baseline mode crawls passively and is suitable for an owned test app.",
+    install: "Use the official OWASP ZAP desktop app or Docker image.",
+    commands: [
+      "docker run --rm -t -v \"$PWD/zap-out:/zap/wrk:rw\" ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://host.docker.internal:3000 -J baseline.json -r baseline.html",
+      "# For Linux Docker, add --network=host only for a local lab app; target http://127.0.0.1:3000",
+      "# Review alerts manually; baseline mode is passive and does not prove exploitability.",
+    ],
+    procedure: [
+      "Start OWASP Juice Shop or another deliberately vulnerable app locally; do not point the scanner at a public site.",
+      "Record the exact local URL, test account (if any), ZAP version, and test window.",
+      "Run baseline/passive scan first; inspect each alert URL and reproduce it manually in the proxy.",
+      "For active tests, obtain explicit written approval, restrict scope, use a disposable app, and avoid destructive rules.",
+      "Portfolio evidence: sanitized alert report, one verified finding with request/response, fix, and successful retest.",
+    ],
+    safety: "The baseline is passive; active scanning generates attack traffic. Only scan a local lab or explicitly authorized target.",
+  },
+  {
+    name: "Checkov",
+    category: "Cloud & Container Security",
+    icon: "cloud",
+    description: "Static policy checks for Terraform, Kubernetes, Dockerfiles, and other infrastructure-as-code before deployment.",
+    install: "python3 -m pip install checkov",
+    commands: [
+      "checkov -d ./terraform --framework terraform --output json > checkov.json",
+      "checkov -f ./k8s/deployment.yaml --framework kubernetes",
+      "checkov -f ./Dockerfile --framework dockerfile --compact",
+    ],
+    procedure: [
+      "Use a sanitized training IaC repo and pin the commit being assessed.",
+      "Run framework-specific checks; map each result to the resource and policy ID.",
+      "Manually confirm exposure and compensating controls; do not treat every policy failure as an exploitable vulnerability.",
+      "Fix a representative issue (for example, public storage or privileged container), validate the plan, then rescan.",
+      "Portfolio evidence: redacted JSON, secure configuration diff, and a concise risk explanation.",
+    ],
+    safety: "Review only infrastructure code you own or are authorized to assess. Never run unreviewed Terraform apply in production.",
+  },
+  {
+    name: "osquery",
+    category: "Endpoint Detection & Response",
+    icon: "cpu",
+    description: "SQL-like endpoint visibility for processes, listening ports, users, startup items, and installed software.",
+    install: "Install osquery from osquery.io on a disposable Linux or Windows lab VM.",
+    commands: [
+      "osqueryi --json \"SELECT pid,name,path FROM processes ORDER BY name LIMIT 25;\"",
+      "osqueryi \"SELECT address,port,protocol FROM listening_ports ORDER BY port;\"",
+      "osqueryi \"SELECT username,uid,directory FROM users;\"",
+    ],
+    procedure: [
+      "Create a baseline snapshot of a clean VM and record OS/osquery versions.",
+      "Run read-only queries for processes, listeners, users, and startup entries; avoid collecting unnecessary personal data.",
+      "Introduce a benign change in the VM (install a test package or start a local service) and query again.",
+      "Compare snapshots, explain the observed delta, and document how an alert could be triaged.",
+      "Portfolio evidence: sanitized SQL queries, baseline-versus-change table, and a short detection note.",
+    ],
+    safety: "Query only endpoints you administer or are authorized to monitor; minimize and protect collected host data.",
+  },
+  {
+    name: "YARA",
+    category: "Threat Hunting & Malware Analysis",
+    icon: "cpu",
+    description: "Rule-based file classification for known patterns in benign test fixtures and authorized malware-analysis samples.",
+    install: "Install YARA from the official project or your OS package manager.",
+    commands: [
+      "yara --version",
+      "yara -r rules/lab-indicators.yar ./fixtures/   # local fixture directory",
+      "yara -s rules/lab-indicators.yar ./fixtures/sample.txt   # show matched strings",
+    ],
+    procedure: [
+      "Write a narrowly scoped rule for a harmless synthetic fixture you create; include a unique identifier and metadata.",
+      "Test against positive and negative fixtures to measure false positives and expected matches.",
+      "Keep rules version-controlled, add unit-like test fixtures, and document known limitations.",
+      "For real samples, use an isolated analysis VM and follow organizational malware-handling procedures.",
+      "Portfolio evidence: rule source, positive/negative test output, and a short detection rationale — no live malware required.",
+    ],
+    safety: "Use synthetic fixtures or samples explicitly authorized for analysis; never execute suspicious files on a personal or production system.",
   },
 ];

@@ -290,7 +290,7 @@ export function runCommand(session, raw) {
       break;
     }
     case "mission": {
-      ["🎯 GUIDED MISSION — 'Operation Lab Breach' (all targets are the fake lab VMs):",
+      ["GUIDED MISSION — 'Operation Lab Breach' (all targets are the fake lab VMs):",
        "  Stage 1  RECON      : nmap -sV 192.168.56.101   → find vsftpd 2.3.4",
        "  Stage 2  WEB ENUM   : gobuster dir -u http://192.168.56.102 ... → /admin/",
        "  Stage 3  EXPLOIT    : msfconsole → use exploit/unix/ftp/vsftpd_234_backdoor",
@@ -300,7 +300,7 @@ export function runCommand(session, raw) {
        "Type the commands stage by stage — each is simulated but teaches the real flow."].forEach((l) => out(l));
       break;
     }
-    case "exit": out("Use the navbar to explore lessons, labs and tools. Session stays open 🙂"); break;
+    case "exit": out("Use the navbar to explore lessons, labs and tools. Session stays open."); break;
     default:
       out(`${cmd}: command not found — type 'help'`, "err");
   }

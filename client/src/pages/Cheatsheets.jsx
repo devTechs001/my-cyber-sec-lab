@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../api.js";
 import SectionHeading from "../components/SectionHeading.jsx";
 import CodeBlock from "../components/CodeBlock.jsx";
+import Icon from "../components/Icon.jsx";
 
 export default function Cheatsheets() {
   const [data, setData] = useState(null);
@@ -24,7 +25,7 @@ export default function Cheatsheets() {
       <div className="cheatsheet-grid">
         {data.cheatsheets.map((c, i) => (
           <div className="panel pop" style={{ animationDelay: `${i * 60}ms` }} key={c.id}>
-            <h3>{c.icon} {c.title}</h3>
+            <h3><Icon name={c.icon} size={19} /> {c.title}</h3>
             {c.sections.map((s) => (
               <div key={s.title}>
                 <h4 className="cheat-sub">{s.title}</h4>

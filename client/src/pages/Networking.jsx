@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../api.js";
 import SectionHeading from "../components/SectionHeading.jsx";
+import Icon from "../components/Icon.jsx";
 
 export default function Networking() {
   const [data, setData] = useState(null);
@@ -22,7 +23,7 @@ export default function Networking() {
       />
 
       <div className="panel">
-        <h3>🌐 OSI model & where security lives</h3>
+        <h3><Icon name="globe" size={18} /> OSI model & where security lives</h3>
         <table className="table">
           <thead><tr><th>Layer</th><th>Name</th><th>Examples</th><th>Security controls</th></tr></thead>
           <tbody>
@@ -37,7 +38,7 @@ export default function Networking() {
 
       <div className="detail-grid">
         <div className="panel">
-          <h3>🔌 Common ports</h3>
+          <h3><Icon name="network" size={18} /> Common ports</h3>
           <table className="table">
             <thead><tr><th>Port</th><th>Service</th><th>Proto</th></tr></thead>
             <tbody>
@@ -48,17 +49,17 @@ export default function Networking() {
           </table>
         </div>
         <div className="panel">
-          <h3>🧮 Subnetting cheat-sheet</h3>
+          <h3><Icon name="chart" size={18} /> Subnetting cheat-sheet</h3>
           <p>{data.subnetting.formula}</p>
           <p>{data.subnetting.cheat}</p>
           <p><em>Example: {data.subnetting.example}</em></p>
-          <h3>🔁 Key protocol flows</h3>
+          <h3><Icon name="refresh" size={18} /> Key protocol flows</h3>
           <ul>{data.keyFlows.map((f, i) => <li key={i}>{f}</li>)}</ul>
         </div>
       </div>
 
       <div className="panel">
-        <h3>🛡️ Hardening checklist</h3>
+        <h3><Icon name="shield" size={18} /> Hardening checklist</h3>
         <ul>{data.hardeningChecklist.map((h, i) => <li key={i}>{h}</li>)}</ul>
       </div>
     </section>

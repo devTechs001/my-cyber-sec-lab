@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../api.js";
 import SectionHeading from "../components/SectionHeading.jsx";
+import Icon from "../components/Icon.jsx";
 
 const levelClass = (lvl) =>
   lvl === "Beginner" ? "badge badge-green" : lvl === "Intermediate" ? "badge badge-amber" : "badge badge-red";
@@ -26,14 +27,14 @@ export default function Lessons() {
         {data?.lessons.map((l) => (
           <Link to={`/lessons/${l.id}`} className="card card-link" key={l.id}>
             <div className="card-top">
-              <span className="card-icon">{l.icon}</span>
+              <span className="card-icon"><Icon name={l.icon} size={26} /></span>
               <span className={levelClass(l.level)}>{l.level}</span>
             </div>
             <h3>
               {l.order}. {l.title}
             </h3>
             <p>{l.summary}</p>
-            <span className="card-meta">⏱ {l.duration}</span>
+            <span className="card-meta"><Icon name="clock" size={14} /> {l.duration}</span>
           </Link>
         ))}
       </div>
