@@ -7,7 +7,7 @@ export const reference = {
     {
       id: "network-troubleshooting",
       title: "Network Troubleshooting",
-      icon: "🔧",
+      icon: "tools",
       items: [
         {
           title: "Is the host reachable?",
@@ -50,7 +50,7 @@ export const reference = {
     {
       id: "wifi",
       title: "WiFi Security — attacks & protection",
-      icon: "📶",
+      icon: "globe",
       items: [
         {
           title: "WPA handshake capture (attack, own AP only)",
@@ -84,7 +84,7 @@ export const reference = {
     {
       id: "recon",
       title: "Reconnaissance (passive & active)",
-      icon: "🔍",
+      icon: "eye",
       items: [
         {
           title: "Passive OSINT (no traffic to target)",
@@ -112,7 +112,7 @@ export const reference = {
     {
       id: "web-attacks",
       title: "Web Application Attacks — XSS, HTTP, MITM, DirB & more",
-      icon: "🕷️",
+      icon: "network",
       items: [
         {
           title: "Cross-Site Scripting (XSS)",
@@ -173,7 +173,7 @@ export const reference = {
     {
       id: "protection",
       title: "Protection & hardening playbook",
-      icon: "🛡️",
+      icon: "shield",
       items: [
         {
           title: "Universal hardening checklist",
@@ -198,7 +198,7 @@ export const reference = {
     {
       id: "more-vectors",
       title: "More attack vectors — malware, DDoS, social engineering",
-      icon: "🦠",
+      icon: "alert",
       items: [
         {
           title: "Malware analysis basics (static then dynamic)",

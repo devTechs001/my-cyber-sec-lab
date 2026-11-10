@@ -3,7 +3,7 @@ export const tools = [
   {
     name: "Nmap",
     category: "Scanning & Enumeration",
-    icon: "📡",
+    icon: "target",
     description: "Network discovery and security auditing: host discovery, port scanning, service/version and OS detection, NSE scripting.",
     install: "sudo apt install nmap   |   brew install nmap",
     commands: [
@@ -18,7 +18,7 @@ export const tools = [
   {
     name: "Burp Suite",
     category: "Web Application Testing",
-    icon: "🕷️",
+    icon: "network",
     description: "Intercepting proxy for web pentesting: site map, Repeater, Intruder, Scanner (Pro).",
     install: "portswigger.net/burp (Community free)",
     commands: [
@@ -33,7 +33,7 @@ export const tools = [
   {
     name: "Wireshark / tshark",
     category: "Traffic Analysis",
-    icon: "🦈",
+    icon: "eye",
     description: "Packet capture and protocol analysis: display filters, TCP streams, TLS/DNS/HTTP inspection.",
     install: "sudo apt install wireshark tshark",
     commands: [
@@ -49,7 +49,7 @@ export const tools = [
   {
     name: "Metasploit Framework",
     category: "Exploitation",
-    icon: "💥",
+    icon: "bolt",
     description: "Exploit framework: search, configure, exploit, post-exploitation with Meterpreter.",
     install: "Preinstalled on Kali — docs.rapid7.com/metasploit",
     commands: [
@@ -66,7 +66,7 @@ export const tools = [
   {
     name: "Hydra",
     category: "Password Attacks",
-    icon: "🐉",
+    icon: "target",
     description: "Online login brute-forcer for 50+ protocols (SSH, RDP, HTTP forms…).",
     install: "sudo apt install hydra",
     commands: [
@@ -79,7 +79,7 @@ export const tools = [
   {
     name: "John the Ripper / hashcat",
     category: "Password Attacks",
-    icon: "🔑",
+    icon: "shield",
     description: "Offline hash cracking: wordlists + rules (John), GPU-accelerated (hashcat).",
     install: "sudo apt install john hashcat",
     commands: [
@@ -94,7 +94,7 @@ export const tools = [
   {
     name: "Gobuster",
     category: "Web Enumeration",
-    icon: "📂",
+    icon: "folder",
     description: "Brute-forces directories, files, DNS subdomains and vhosts.",
     install: "sudo apt install gobuster",
     commands: [
@@ -107,7 +107,7 @@ export const tools = [
   {
     name: "SQLmap",
     category: "Web Application Testing",
-    icon: "💉",
+    icon: "target",
     description: "Automates SQL injection detection and database exploitation.",
     install: "sudo apt install sqlmap",
     commands: [
@@ -121,7 +121,7 @@ export const tools = [
   {
     name: "Netcat",
     category: "Networking / Shells",
-    icon: "🔌",
+    icon: "bolt",
     description: "TCP/UDP Swiss-army knife: port checks, banner grabbing, file transfer, lab shells.",
     install: "sudo apt install netcat-openbsd",
     commands: [
@@ -135,7 +135,7 @@ export const tools = [
   {
     name: "Aircrack-ng",
     category: "Wireless",
-    icon: "📶",
+    icon: "globe",
     description: "Wireless auditing: monitor mode, WPA handshake capture/analysis (your own AP only).",
     install: "sudo apt install aircrack-ng",
     commands: [
@@ -149,7 +149,7 @@ export const tools = [
   {
     name: "OWASP ZAP",
     category: "Web Application Testing",
-    icon: "⚡",
+    icon: "bolt",
     description: "Free automated web scanner + intercepting proxy (Burp alternative).",
     install: "sudo apt install zaproxy  |  zaproxy.org/download",
     commands: [
@@ -162,7 +162,7 @@ export const tools = [
   {
     name: "LinPEAS / WinPEAS",
     category: "Privilege Escalation",
-    icon: "⬆️",
+    icon: "chart",
     description: "Enumeration scripts highlighting privesc vectors on Linux/Windows.",
     install: "github.com/peass-ng/PEASS-ng",
     commands: [
@@ -176,7 +176,7 @@ export const tools = [
   {
     name: "BloodHound + SharpHound",
     category: "Active Directory",
-    icon: "🩸",
+    icon: "target",
     description: "Maps AD attack paths: collect with SharpHound, analyze graph in BloodHound GUI.",
     install: "github.com/BloodHoundAD/BloodHound",
     commands: [
@@ -190,7 +190,7 @@ export const tools = [
   {
     name: "Impacket",
     category: "Active Directory",
-    icon: "🧰",
+    icon: "tools",
     description: "Python toolkit for Windows protocols: SMB, Kerberos roasting, remote execution, DCSync.",
     install: "pipx install impacket  (or sudo apt install python3-impacket)",
     commands: [
@@ -204,7 +204,7 @@ export const tools = [
   {
     name: "Rubeus",
     category: "Active Directory",
-    icon: "🎫",
+    icon: "file",
     description: "C# toolset for Kerberos ticket abuse: roasting, forging, extraction (Windows).",
     install: "github.com/GhostPack/Rubeus (prebuilt binary)",
     commands: [
@@ -217,7 +217,7 @@ export const tools = [
   {
     name: "Responder",
     category: "Active Directory",
-    icon: "📡",
+    icon: "target",
     description: "LLMNR/NBT-NS/mDNS poisoner that captures NetNTLM hashes on the local segment.",
     install: "sudo apt install responder",
     commands: [
@@ -229,7 +229,7 @@ export const tools = [
   {
     name: "WPScan",
     category: "Web Application Testing",
-    icon: "📝",
+    icon: "file",
     description: "WordPress vulnerability scanner: plugins, themes, users, misconfigs.",
     install: "sudo apt install wpscan",
     commands: [
@@ -241,7 +241,7 @@ export const tools = [
   {
     name: "Nikto",
     category: "Web Application Testing",
-    icon: "🔍",
+    icon: "eye",
     description: "Web server scanner: outdated versions, dangerous files, misconfigurations.",
     install: "sudo apt install nikto",
     commands: [
@@ -253,7 +253,7 @@ export const tools = [
   {
     name: "OpenVAS / Greenbone",
     category: "Vulnerability Management",
-    icon: "🩹",
+    icon: "shield",
     description: "Full vulnerability scanner (Nessus alternative) with web UI; feeds DefectDojo.",
     install: "sudo apt install greenbone-feed-sync; see greenbone.net — or Kali package gvm",
     commands: [
@@ -266,7 +266,7 @@ export const tools = [
   {
     name: "Splunk / Wazuh (SIEM)",
     category: "Blue Team / SIEM",
-    icon: "📊",
+    icon: "chart",
     description: "SIEM platforms: ingest logs, write detections (SPL/KQL), dashboards, alerts.",
     install: "splunk.com (free 500MB/day) · wazuh.com (open source)",
     commands: [
@@ -280,7 +280,7 @@ export const tools = [
   {
     name: "Zeek / Suricata",
     category: "Blue Team / Network Monitoring",
-    icon: "🛰️",
+    icon: "globe",
     description: "Network traffic analysis (Zeek logs) and IDS/IPS (Suricata) — feed the SIEM.",
     install: "sudo apt install zeek suricata",
     commands: [
@@ -294,7 +294,7 @@ export const tools = [
   {
     name: "GoPhish / Atomic Red Team / Sigma",
     category: "Blue Team / Detection Testing",
-    icon: "🎣",
+    icon: "target",
     description: "GoPhish: phishing simulation (authorized). Atomic Red Team + Sigma: generate attack activity and validate detections.",
     install: "github.com/gophish/gophish · github.com/redcanaryco/atomic-red-team · sigmahq.io",
     commands: [
@@ -308,7 +308,7 @@ export const tools = [
   {
     name: "NetExec (CrackMapExec)",
     category: "Active Directory",
-    icon: "🕸️",
+    icon: "network",
     description: "Post-exploitation Swiss-army for SMB/WinRM/LDAP/RDP — enumeration, cred spraying, command exec on lab domains.",
     install: "pipx install netexec",
     commands: [
@@ -322,7 +322,7 @@ export const tools = [
   {
     name: "Mimikatz",
     category: "Active Directory",
-    icon: "🥷",
+    icon: "eye",
     description: "Extracts credentials from Windows LSASS memory (lab VMs only): sekurlsa::logonpasswords, lsadump::dcsync.",
     install: "Preinstalled on Kali — github.com/gentilkiwi/mimikatz",
     commands: [
@@ -335,7 +335,7 @@ export const tools = [
   {
     name: "Chisel / Ligolo-ng",
     category: "Tunneling / Pivoting",
-    icon: "🕳️",
+    icon: "globe",
     description: "Pivot through compromised lab hosts: SOCKS proxy or full L3 tunnel to reach isolated segments.",
     install: "github.com/jpillora/chisel · github.com/nicocha30/ligolo-ng",
     commands: [
@@ -348,7 +348,7 @@ export const tools = [
   {
     name: "Amass / Subfinder",
     category: "Reconnaissance / OSINT",
-    icon: "🛰️",
+    icon: "globe",
     description: "Subdomain enumeration from passive sources (CT logs, APIs) — great first step on authorized domains.",
     install: "sudo apt install amass subfinder",
     commands: [
@@ -361,7 +361,7 @@ export const tools = [
   {
     name: "theHarvester",
     category: "Reconnaissance / OSINT",
-    icon: "🌾",
+    icon: "chart",
     description: "Harvests emails, subdomains, hosts, employee names from public sources for your own org's assessments.",
     install: "sudo apt install theharvester",
     commands: [
@@ -373,7 +373,7 @@ export const tools = [
   {
     name: "Shodan CLI",
     category: "Reconnaissance / OSINT",
-    icon: "🔎",
+    icon: "eye",
     description: "Search engine for internet-connected devices — find your own exposed services before attackers do.",
     install: "pip install shodan && shodan init <API_KEY>",
     commands: [
@@ -386,7 +386,7 @@ export const tools = [
   {
     name: "CyberChef",
     category: "Forensics / Analysis",
-    icon: "🧑‍🍳",
+    icon: "tools",
     description: "Web-based 'cyber Swiss army knife': decode/encode, hashes, extract IOCs, parse binaries — run locally.",
     install: "gchq.github.io/CyberChef (or local: docker run -p 8000:8000 remnux/cyberchef)",
     commands: [
@@ -398,7 +398,7 @@ export const tools = [
   {
     name: "Volatility 3 / Rekall",
     category: "Forensics / Memory",
-    icon: "🧠",
+    icon: "cpu",
     description: "Memory forensics: extract processes, network connections, injected code from RAM images of lab VMs.",
     install: "pip install volatility3",
     commands: [
@@ -413,7 +413,7 @@ export const tools = [
   {
     name: "Ghidra / radare2",
     category: "Reverse Engineering",
-    icon: "🧬",
+    icon: "cpu",
     description: "Disassemble and decompile malware samples (lab-only) to understand behavior and extract IOCs.",
     install: "sudo apt install ghidra radare2  (or ghidra-sre.org)",
     commands: [
@@ -426,7 +426,7 @@ export const tools = [
   {
     name: "Binwalk",
     category: "Forensics / Firmware",
-    icon: "📦",
+    icon: "server",
     description: "Firmware analysis: extract embedded filesystems and files from router/IoT firmware images.",
     install: "sudo apt install binwalk",
     commands: [
@@ -439,7 +439,7 @@ export const tools = [
   {
     name: "SecLists",
     category: "Wordlists / Payloads",
-    icon: "📚",
+    icon: "book",
     description: "The standard collection of wordlists (users, passwords, dirs, fuzzing, LFI/XSS payloads) used by every tool above.",
     install: "sudo apt install seclists  →  /usr/share/seclists/",
     commands: [
@@ -453,7 +453,7 @@ export const tools = [
   {
     name: "PayloadsAllTheThings",
     category: "Payloads / Cheatsheets",
-    icon: "🎁",
+    icon: "link",
     description: "Massive public collection of payloads & bypass techniques for web, AD, cloud — ideal for lab practice.",
     install: "git clone github.com/swisskyrepo/PayloadsAllTheThings",
     commands: [
@@ -465,7 +465,7 @@ export const tools = [
   {
     name: "Trivy",
     category: "Cloud & Container Security",
-    icon: "🐳",
+    icon: "server",
     description: "Scan container images and source trees for known CVEs, exposed secrets, and risky configuration; use in CI before release.",
     install: "Install from aquasecurity.github.io/trivy or use the official container image.",
     commands: [
@@ -485,7 +485,7 @@ export const tools = [
   {
     name: "Semgrep",
     category: "Secure Code Review",
-    icon: "🔬",
+    icon: "eye",
     description: "Static analysis for insecure patterns across application code, with language-aware rules and CI support.",
     install: "python3 -m pip install semgrep  (or use the official Semgrep CLI install guide)",
     commands: [
@@ -505,7 +505,7 @@ export const tools = [
   {
     name: "Gitleaks",
     category: "Secure Code Review",
-    icon: "🔐",
+    icon: "shield",
     description: "Detect credentials and tokens accidentally committed to Git history; supports pre-commit and CI checks.",
     install: "Install with the official Gitleaks release or package manager.",
     commands: [
@@ -525,7 +525,7 @@ export const tools = [
   {
     name: "testssl.sh",
     category: "Web & TLS Assessment",
-    icon: "🔒",
+    icon: "shield",
     description: "Audits TLS versions, cipher suites, certificate chain, and common TLS configuration weaknesses.",
     install: "git clone https://github.com/testssl/testssl.sh.git  (official project)",
     commands: [
@@ -545,7 +545,7 @@ export const tools = [
   {
     name: "OWASP ZAP",
     category: "Web Application Testing",
-    icon: "🛡️",
+    icon: "shield",
     description: "Intercepting proxy and passive web scanner. Baseline mode crawls passively and is suitable for an owned test app.",
     install: "Use the official OWASP ZAP desktop app or Docker image.",
     commands: [
@@ -565,7 +565,7 @@ export const tools = [
   {
     name: "Checkov",
     category: "Cloud & Container Security",
-    icon: "☁️",
+    icon: "cloud",
     description: "Static policy checks for Terraform, Kubernetes, Dockerfiles, and other infrastructure-as-code before deployment.",
     install: "python3 -m pip install checkov",
     commands: [
@@ -585,7 +585,7 @@ export const tools = [
   {
     name: "osquery",
     category: "Endpoint Detection & Response",
-    icon: "🖥️",
+    icon: "cpu",
     description: "SQL-like endpoint visibility for processes, listening ports, users, startup items, and installed software.",
     install: "Install osquery from osquery.io on a disposable Linux or Windows lab VM.",
     commands: [
@@ -605,7 +605,7 @@ export const tools = [
   {
     name: "YARA",
     category: "Threat Hunting & Malware Analysis",
-    icon: "🧬",
+    icon: "cpu",
     description: "Rule-based file classification for known patterns in benign test fixtures and authorized malware-analysis samples.",
     install: "Install YARA from the official project or your OS package manager.",
     commands: [

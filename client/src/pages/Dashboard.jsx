@@ -76,22 +76,22 @@ export default function Dashboard() {
       {/* NEXT UP */}
       <div className="detail-grid">
         <div className="panel next-up">
-          <h3>⏭️ Next lesson</h3>
+          <h3><Icon name="arrow" size={18} /> Next lesson</h3>
           {nextLesson ? (
             <>
-              <p><strong>{nextLesson.icon} {nextLesson.title}</strong> <span className="badge badge-amber">{nextLesson.level}</span></p>
+              <p><strong><Icon name={nextLesson.icon} size={18} /> {nextLesson.title}</strong> <span className="badge badge-amber">{nextLesson.level}</span></p>
               <Link to={`/lessons/${nextLesson.id}`} className="btn btn-primary">Continue →</Link>
             </>
-          ) : <p>🎉 All lessons complete!</p>}
+          ) : <p><><Icon name="check" size={16} /> All lessons complete!</></p>}
         </div>
         <div className="panel next-up">
-          <h3>🧪 Next lab</h3>
+          <h3><Icon name="flask" size={18} /> Next lab</h3>
           {nextLab ? (
             <>
               <p><strong>{nextLab.title}</strong> <span className="badge badge-cyan">{nextLab.difficulty}</span></p>
               <Link to={`/labs/${nextLab.id}`} className="btn btn-primary">Start lab →</Link>
             </>
-          ) : <p>🎉 All labs complete!</p>}
+          ) : <p><><Icon name="check" size={16} /> All labs complete!</></p>}
         </div>
       </div>
 
@@ -110,36 +110,36 @@ export default function Dashboard() {
       {/* PROGRESS CHECKLISTS */}
       <div className="detail-grid">
         <div className="panel">
-          <h3>🎓 Lesson progress</h3>
+          <h3><Icon name="book" size={18} /> Lesson progress</h3>
           <ul className="checklist">
             {lessonProgress.map((l) => (
               <li key={l.id} className={l.done ? "done" : ""}>
                 <button className="check-btn" onClick={() => toggle(l.id, l.done)} aria-label="toggle">
-                  {l.done ? "✅" : "⬜"}
+                  <Icon name={l.done ? "check" : "file"} size={16} />
                 </button>
-                <Link to={`/lessons/${l.id}`}>{l.order}. {l.icon} {l.title}</Link>
+                <Link to={`/lessons/${l.id}`}>{l.order}. <Icon name={l.icon} size={16} /> {l.title}</Link>
               </li>
             ))}
           </ul>
         </div>
         <div className="panel">
-          <h3>🧪 Lab progress</h3>
+          <h3><Icon name="flask" size={18} /> Lab progress</h3>
           <ul className="checklist">
             {labProgress.map((l) => (
               <li key={l.id} className={l.done ? "done" : ""}>
                 <button className="check-btn" onClick={() => toggle(l.id, l.done)} aria-label="toggle">
-                  {l.done ? "✅" : "⬜"}
+                  <Icon name={l.done ? "check" : "file"} size={16} />
                 </button>
                 <Link to={`/labs/${l.id}`}>{l.title}</Link>
               </li>
             ))}
           </ul>
-          <h3>🕒 Recent activity</h3>
+          <h3><Icon name="clock" size={18} /> Recent activity</h3>
           {activity.length === 0 && <p className="muted">No activity yet — mark something complete!</p>}
           <ul className="activity">
             {activity.map((a, i) => (
               <li key={i}>
-                {a.done ? "✅" : "↩️"} <code>{a.id}</code> — {a.at ? new Date(a.at).toLocaleString() : ""}
+                <Icon name={a.done ? "check" : "refresh"} size={15} /> <code>{a.id}</code> — {a.at ? new Date(a.at).toLocaleString() : ""}
               </li>
             ))}
           </ul>

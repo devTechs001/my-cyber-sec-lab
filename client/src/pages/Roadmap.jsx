@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../api.js";
 import SectionHeading from "../components/SectionHeading.jsx";
+import Icon from "../components/Icon.jsx";
 
 export default function Roadmap() {
   const [data, setData] = useState(null);
@@ -29,7 +30,7 @@ export default function Roadmap() {
         ))}
       </div>
       <div className="ethics-banner">
-        <h3>📋 The process that ties it together</h3>
+        <h3><Icon name="layers" size={18} /> The process that ties it together</h3>
         <p>
           Every engagement follows the same loop: <strong>Scope → Recon → Scan → Exploit → Escalate →
           Report → Remediate</strong>. See <code>docs/processes.md</code> for the full methodology and

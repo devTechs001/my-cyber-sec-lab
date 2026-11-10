@@ -66,7 +66,7 @@ export default function Home() {
         <div className="card-grid">
           {highlights.map((h) => (
             <div className="card" key={h.title}>
-              <div className="card-icon">{h.icon}</div>
+              <div className="card-icon"><Icon name={h.icon} size={26} /></div>
               <h3>{h.title}</h3>
               <p>{h.text}</p>
             </div>

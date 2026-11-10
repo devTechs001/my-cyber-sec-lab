@@ -7,7 +7,7 @@ export const lessons = [
     title: "Networking Fundamentals",
     level: "Beginner",
     duration: "2-3 hrs",
-    icon: "🌐",
+    icon: "globe",
     summary: "OSI & TCP/IP models, IP addressing, subnetting, ports and protocols — the base every attack and defense is built on.",
     objectives: [
       "Explain the OSI 7-layer model and where each security control lives",
@@ -41,7 +41,7 @@ export const lessons = [
     title: "Linux for Security Professionals",
     level: "Beginner",
     duration: "3-4 hrs",
-    icon: "🐧",
+    icon: "terminal",
     summary: "Kali/Parrot command line fluency: filesystem, permissions, processes, users, networking tools and scripting basics.",
     objectives: [
       "Navigate the Linux filesystem and manage permissions with chmod/chown",
@@ -75,7 +75,7 @@ export const lessons = [
     title: "Reconnaissance & OSINT",
     level: "Beginner",
     duration: "2-3 hrs",
-    icon: "🔍",
+    icon: "eye",
     summary: "Passive information gathering: WHOIS, DNS records, search-engine OSINT, social media, breach data — all without touching the target.",
     objectives: [
       "Enumerate DNS records and subdomains of a lab domain",
@@ -109,7 +109,7 @@ export const lessons = [
     title: "Scanning & Enumeration with Nmap",
     level: "Intermediate",
     duration: "3-4 hrs",
-    icon: "📡",
+    icon: "target",
     summary: "Host discovery, port scanning, service/version detection, OS fingerprinting and Nmap Scripting Engine — against lab VMs only.",
     objectives: [
       "Run host discovery and full port scans on lab targets",
@@ -144,7 +144,7 @@ export const lessons = [
     title: "Web Application Pentesting with Burp Suite",
     level: "Intermediate",
     duration: "4-5 hrs",
-    icon: "🕷️",
+    icon: "network",
     summary: "Intercepting proxies, repeater, intruder, scanner basics — hunting OWASP Top 10 issues on DVWA / Juice Shop in a local lab.",
     objectives: [
       "Configure browser proxy through Burp and install its CA certificate",
@@ -179,7 +179,7 @@ export const lessons = [
     title: "Exploitation Basics with Metasploit",
     level: "Intermediate",
     duration: "4-6 hrs",
-    icon: "💥",
+    icon: "bolt",
     summary: "The Metasploit Framework workflow: search, select, configure an exploit, pick a payload, and run it against deliberately vulnerable lab VMs (Metasploitable).",
     objectives: [
       "Navigate msfconsole and search the exploit database",
@@ -214,7 +214,7 @@ export const lessons = [
     title: "Packet Analysis with Wireshark",
     level: "Intermediate",
     duration: "3-4 hrs",
-    icon: "🦈",
+    icon: "eye",
     summary: "Capture and analyze traffic: follow TCP streams, read DNS/HTTP/TLS handshakes, spot anomalies and extract artifacts from lab captures.",
     objectives: [
       "Capture traffic on a lab interface and apply display filters",
@@ -248,7 +248,7 @@ export const lessons = [
     title: "Password Security & Lab Cracking",
     level: "Intermediate",
     duration: "3 hrs",
-    icon: "🔑",
+    icon: "shield",
     summary: "Hashing vs encryption, salting, and how attackers crack weak passwords — practiced only on your own lab hashes with Hydra/John against local lab services.",
     objectives: [
       "Explain hash functions, salts and why slow hashes (bcrypt/argon2) matter",
@@ -281,7 +281,7 @@ export const lessons = [
     title: "Wireless & Social Engineering Awareness",
     level: "Advanced",
     duration: "3 hrs",
-    icon: "📶",
+    icon: "globe",
     summary: "How Wi-Fi attacks work conceptually (WPA2 handshakes, evil twins) and how phishing manipulates people — with defense-first focus.",
     objectives: [
       "Describe WPA2/WPA3 handshake capture and why WPA3 matters (conceptually, lab-only)",
@@ -311,7 +311,7 @@ export const lessons = [
     title: "Privilege Escalation",
     level: "Advanced",
     duration: "4 hrs",
-    icon: "⬆️",
+    icon: "chart",
     summary: "From a low-priv shell to root/admin: Linux privesc (SUID, cron, sudo misconfig) and Windows privesc, practiced on lab VMs.",
     objectives: [
       "Enumerate a lab Linux box for privesc vectors (LinPEAS-style manual checks)",
@@ -344,7 +344,7 @@ export const lessons = [
     title: "Reporting & Responsible Disclosure",
     level: "Advanced",
     duration: "2-3 hrs",
-    icon: "📝",
+    icon: "file",
     summary: "Turn findings into a professional pentest report and disclose vulnerabilities responsibly through proper channels.",
     objectives: [
       "Structure an executive summary and technical findings",
@@ -375,7 +375,7 @@ export const lessons = [
     title: "Build Your Virtual Attack Lab",
     level: "Beginner",
     duration: "2-3 hrs",
-    icon: "🖥️",
+    icon: "cpu",
     summary: "Set up Kali Linux (the perfect pentest OS) plus vulnerable VMs (Metasploitable, DVWA) on an isolated host-only network — the foundation for every hands-on lab.",
     objectives: [
       "Install VirtualBox and create a host-only network (192.168.56.0/24)",
@@ -409,7 +409,7 @@ export const lessons = [
     title: "OWASP Top 10 — Web Deep Dive",
     level: "Intermediate",
     duration: "4-5 hrs",
-    icon: "🕷️",
+    icon: "network",
     summary: "Go deep on the OWASP Top 10: injection, broken auth, sensitive data exposure, XXE, broken access control, misconfig, XSS, deserialization, vulnerable components, logging failures — each with a lab PoC and fix.",
     objectives: [
       "Exploit and fix each major OWASP category in DVWA/Juice Shop",
@@ -442,7 +442,7 @@ export const lessons = [
     title: "Blue Team — SIEM & Detection Engineering",
     level: "Intermediate",
     duration: "4-6 hrs",
-    icon: "🛡️",
+    icon: "shield",
     summary: "Ingest logs into Wazuh/Splunk, write SPL/Sigma detections (brute force, backdoor, suspicious process), build dashboards and alerts, and validate with Atomic Red Team.",
     objectives: [
       "Forward Windows (Sysmon) and Linux logs into a SIEM",
@@ -474,7 +474,7 @@ export const lessons = [
     title: "Active Directory Attack Chain",
     level: "Advanced",
     duration: "6-8 hrs",
-    icon: "🏰",
+    icon: "server",
     summary: "Build a lab domain (DC + member + workstation) and run the full chain: AS-REP roasting, Kerberoasting, BloodHound path-finding, ACL abuse, lateral movement with pass-the-hash.",
     objectives: [
       "Stand up a lab AD domain on a host-only network",
@@ -508,7 +508,7 @@ export const lessons = [
     title: "Cloud Security Basics (AWS/GCP)",
     level: "Advanced",
     duration: "3-4 hrs",
-    icon: "☁️",
+    icon: "cloud",
     summary: "Cloud attack/defense basics: IAM misconfigurations, exposed S3 buckets, CloudTrail logging, and deliberately vulnerable cloud labs (CloudGoat) on your OWN account.",
     objectives: [
       "Understand IAM, least privilege, and MFA in AWS/GCP",
@@ -541,7 +541,7 @@ export const lessons = [
     title: "Incident Response & Forensics Basics",
     level: "Advanced",
     duration: "3-4 hrs",
-    icon: "🚨",
+    icon: "alert",
     summary: "The IR loop — prepare, detect, contain, eradicate, recover, lessons — practiced on a lab incident: find the intrusion in logs, preserve evidence, contain, and write the report.",
     objectives: [
       "Follow the IR lifecycle on a simulated intrusion",

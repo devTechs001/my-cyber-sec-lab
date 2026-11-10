@@ -5,7 +5,7 @@ export const projects = [
   {
     id: "soc-siem-lab",
     role: "Blue Team",
-    icon: "🛡️",
+    icon: "shield",
     title: "Home SOC Lab with SIEM (Splunk or Wazuh)",
     level: "Intermediate",
     duration: "2-3 weeks",
@@ -30,7 +30,7 @@ export const projects = [
   {
     id: "phishing-investigation",
     role: "Blue Team",
-    icon: "🎣",
+    icon: "target",
     title: "Phishing Investigation Lab",
     level: "Beginner-Intermediate",
     duration: "1 week",
@@ -55,7 +55,7 @@ export const projects = [
   {
     id: "soar-lite-automation",
     role: "Blue Team",
-    icon: "🤖",
+    icon: "cpu",
     title: "Python Security Automation (SOAR-lite)",
     level: "Advanced",
     duration: "2-3 weeks",
@@ -79,7 +79,7 @@ export const projects = [
   {
     id: "sigma-detection-lab",
     role: "Blue Team",
-    icon: "🎯",
+    icon: "target",
     title: "Detection Engineering Lab (Sigma Rules)",
     level: "Advanced",
     duration: "1-2 weeks",
@@ -102,7 +102,7 @@ export const projects = [
   {
     id: "ad-attack-chain",
     role: "Red Team",
-    icon: "🏰",
+    icon: "server",
     title: "Active Directory Attack Chain Lab",
     level: "Advanced",
     duration: "3-4 weeks",
@@ -127,7 +127,7 @@ export const projects = [
   {
     id: "web-exploitation-walkthrough",
     role: "Red Team",
-    icon: "🕷️",
+    icon: "network",
     title: "Web Application Exploitation Walkthrough",
     level: "Intermediate",
     duration: "1-2 weeks",
@@ -153,7 +153,7 @@ export const projects = [
   {
     id: "vuln-management-cycle",
     role: "Red Team",
-    icon: "🩹",
+    icon: "shield",
     title: "Vulnerability Management Cycle",
     level: "Intermediate",
     duration: "1-2 weeks",

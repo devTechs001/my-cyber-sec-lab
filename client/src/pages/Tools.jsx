@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../api.js";
 import SectionHeading from "../components/SectionHeading.jsx";
 import CodeBlock from "../components/CodeBlock.jsx";
+import Icon from "../components/Icon.jsx";
 
 export default function Tools() {
   const [data, setData] = useState(null);
@@ -51,7 +52,7 @@ export default function Tools() {
         {visible.map((t) => (
           <div className="card tool-card" key={t.name}>
             <div className="card-top">
-              <span className="card-icon">{t.icon}</span>
+              <span className="card-icon"><Icon name={t.icon} size={26} /></span>
               <span className="badge badge-cyan">{t.category}</span>
             </div>
             <h3>{t.name}</h3>
@@ -64,7 +65,7 @@ export default function Tools() {
                 <ol>{t.procedure.map((step, i) => <li key={i}>{step}</li>)}</ol>
               </details>
             )}
-            <p className="safety-text">⚖️ {t.safety}</p>
+            <p className="safety-text"><Icon name="shield" size={16} /> {t.safety}</p>
           </div>
         ))}
       </div>
