@@ -10,6 +10,7 @@ import LessonDetail from "./pages/LessonDetail.jsx";
 import Labs from "./pages/Labs.jsx";
 import LabDetail from "./pages/LabDetail.jsx";
 import Tools from "./pages/Tools.jsx";
+import FieldNotes from "./pages/FieldNotes.jsx";
 import Networking from "./pages/Networking.jsx";
 import Roadmap from "./pages/Roadmap.jsx";
 import Terminal from "./pages/Terminal.jsx";
@@ -38,6 +39,7 @@ export default function App() {
             <Route path="/labs" element={<Labs />} />
             <Route path="/labs/:id" element={<LabDetail />} />
             <Route path="/tools" element={<Tools />} />
+            <Route path="/field-notes" element={<FieldNotes />} />
             <Route path="/networking" element={<Networking />} />
             <Route path="/roadmap" element={<Roadmap />} />
             <Route path="/terminal" element={<Terminal />} />
