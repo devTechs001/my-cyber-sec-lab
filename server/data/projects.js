@@ -1,4 +1,4 @@
-// Job-ready portfolio projects — 4 Blue Team (SOC) + 3 Red Team (Pentest).
+// Practical security projects — 4 Blue Team (SOC) + 3 Red Team (Pentest).
 // Each project is designed to be hosted on GitHub with a professional README
 // and showcased on this portfolio site + LinkedIn.
 export const projects = [
@@ -19,7 +19,7 @@ export const projects = [
       "Build a dashboard: attacks over time, top source IPs, alert status.",
       "Write a short incident report: what happened, how you detected it, timeline, remediation.",
     ],
-    showcase: [
+    deliverables: [
       "Architecture diagram (draw.io / Excalidraw)",
       "SPL/KQL queries used",
       "Screenshots of alerts firing",
@@ -45,7 +45,7 @@ export const projects = [
       "Map to MITRE ATT&CK (e.g. T1566 Phishing, T1204 User Execution).",
       "Write a one-page triage report.",
     ],
-    showcase: [
+    deliverables: [
       "Raw email (sanitized/defanged)",
       "Extracted IOC list",
       "Enrichment results (VirusTotal/whois)",
@@ -69,7 +69,7 @@ export const projects = [
       "Safety: allowlist your own IPs, dry-run mode, max rules cap, automatic unblock after TTL.",
       "Measure: before/after logs showing automated containment time vs manual.",
     ],
-    showcase: [
+    deliverables: [
       "Script on GitHub with a clear README",
       "Automation flow diagram",
       "Before/after logs showing automated containment (MTTR reduction)",
@@ -93,7 +93,7 @@ export const projects = [
       "Convert with sigma-cli, load into the SIEM, confirm alerts fire.",
       "Tune: add filters (exclude known admin paths), compare alerts before/after tuning.",
     ],
-    showcase: [
+    deliverables: [
       "Sigma YAML files on GitHub",
       "Test commands used (Atomic Red Team)",
       "Before/after detection comparison after tuning",
@@ -117,7 +117,7 @@ export const projects = [
       "ACL abuse: find GenericAll/WriteDACL → abuse (e.g. add SPN / reset password) → move laterally with impacket psexec/wmiexec.",
       "Document each step with commands + output; write remediation (disable pre-auth nowhere, strong service-account passwords, tiered admins, PAW).",
     ],
-    showcase: [
+    deliverables: [
       "BloodHound screenshots (attack paths)",
       "Command transcripts per step",
       "Cracked hashes (redacted)",
@@ -143,7 +143,7 @@ export const projects = [
       "Write the full walkthrough with request/response pairs and payloads.",
       "Add a developer remediation section (parameterized queries, output encoding, upload allowlists, disable dangerous includes).",
     ],
-    showcase: [
+    deliverables: [
       "Step-by-step writeup with Burp screenshots",
       "Raw HTTP request/response pairs",
       "Payloads used",
@@ -168,36 +168,10 @@ export const projects = [
       "Rescan and compare before/after reports; close the fixed findings in DefectDojo.",
       "Write a prioritization memo.",
     ],
-    showcase: [
+    deliverables: [
       "Before/after scan reports",
       "Remediation commands applied",
       "Prioritization memo (CVSS + business impact)",
     ],
   },
 ];
-
-export const showcaseGuide = {
-  title: "How to showcase your work (the real portfolio)",
-  points: [
-    {
-      title: "Host everything on GitHub with professional READMEs",
-      detail: "Each project repo gets: problem statement, environment details (VMs, tools, network diagram), key commands/outputs (redacted if needed), findings & evidence (screenshots, logs), lessons learned & next steps.",
-    },
-    {
-      title: "Portfolio website (this site!)",
-      detail: "List projects with links to repos, a short About section and your target role. Add security headers (CSP etc.) to show attention to detail — this React app is exactly that.",
-    },
-    {
-      title: "Post on LinkedIn",
-      detail: "Share a sanitized version of one project: the problem, your approach, one key takeaway — and link the GitHub repo. Recruiters get something concrete to discuss in interviews.",
-    },
-  ],
-  readmeTemplate: [
-    "# <Project name>",
-    "## Problem statement",
-    "## Environment (VMs, tools, network diagram)",
-    "## Steps & key commands (outputs redacted where needed)",
-    "## Findings & evidence (screenshots, logs)",
-    "## Lessons learned & next steps",
-  ],
-};

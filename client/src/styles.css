@@ -558,16 +558,9 @@ body { transition: background 0.3s ease, color 0.3s ease; }
 .project-summary { color: var(--muted); font-size: 0.92rem; margin: 0.7rem 0 0.3rem; }
 .project-example { color: var(--cyan); font-size: 0.85rem; margin: 0.3rem 0; }
 .project-steps { font-size: 0.88rem; }
-.showcase-list { list-style: none; padding: 0; margin: 0.3rem 0 0; }
-.showcase-list li { display: flex; align-items: center; gap: 0.45rem; color: var(--muted); font-size: 0.87rem; margin-bottom: 0.25rem; }
-.showcase-list .icon { color: var(--green); }
-.showcase-guide { margin-top: 1.4rem; }
-.readme-template {
-  font-family: var(--font-mono); font-size: 0.82rem; color: #c8e6c9;
-  background: var(--code-bg); border: 1px solid var(--border); border-radius: 10px;
-  padding: 0.9rem 1rem; overflow-x: auto; margin: 0.4rem 0 0;
-}
-
+.deliverables-list { list-style: none; padding: 0; margin: 0.3rem 0 0; }
+.deliverables-list li { display: flex; align-items: center; gap: 0.45rem; color: var(--muted); font-size: 0.87rem; margin-bottom: 0.25rem; }
+.deliverables-list .icon { color: var(--green); }
 /* ============ Attacks & Defense reference ============ */
 .ref-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1rem; margin-top: 0.6rem; }
 .ref-card {

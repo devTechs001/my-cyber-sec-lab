@@ -10,7 +10,7 @@ import { labSetup } from "../data/labsetup.js";
 import { resources } from "../data/resources.js";
 import { vulnSystems } from "../data/vulnsystems.js";
 import { cheatsheets } from "../data/cheatsheets.js";
-import { projects, showcaseGuide } from "../data/projects.js";
+import { projects } from "../data/projects.js";
 import { reference } from "../data/reference.js";
 import { register, login, logout, authMiddleware } from "../auth.js";
 
@@ -129,12 +129,12 @@ router.get("/cheatsheets", (_req, res) => res.json({ count: cheatsheets.length, 
 router.get("/projects", (req, res) => {
   const role = req.query.role;
   const list = role && role !== "All" ? projects.filter((p) => p.role === role) : projects;
-  res.json({ count: list.length, total: projects.length, roles: ["All", "Blue Team", "Red Team"], projects: list, showcaseGuide });
+  res.json({ count: list.length, total: projects.length, roles: ["All", "Blue Team", "Red Team"], projects: list });
 });
 router.get("/projects/:id", (req, res) => {
   const p = projects.find((x) => x.id === req.params.id);
   if (!p) return res.status(404).json({ error: "project not found" });
-  res.json({ ...p, showcaseGuide });
+  res.json(p);
 });
 
 router.get("/resources", (_req, res) =>
