@@ -89,7 +89,7 @@ python3 log_analyzer.py auth.log.sample                # failed-login report
 
 | Part | Platform | Config | Steps |
 |---|---|---|---|
-| Frontend | **Netlify** | `netlify.toml` (repo root) | Import repo → base `client`, build `npm run build`, publish `dist` |
+| Frontend | **Netlify** | `netlify.toml` (repo root) | Import repo → base root, build `cd client && npm ci && npm run build`, publish `client/dist` |
 | Backend API | **Render** | `deploy/render.yaml` | New Web Service → root `server`, start `npm start`, set `NODE_ENV=production`; health: `/api/health` |
 
 Full walkthrough: [`deploy/DEPLOY.md`](deploy/DEPLOY.md)

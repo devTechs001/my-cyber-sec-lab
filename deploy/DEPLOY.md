@@ -33,9 +33,10 @@ cd client && npm install && npm run dev        # http://localhost:5173 (proxies 
 ## 3. Deploy the frontend to Netlify
 
 1. Netlify → **Add new site → Import an existing project** → pick the repository root.
-2. Use the committed root `netlify.toml` as the source of truth: base directory `client`, build command `npm run build`, publish directory `dist` (relative to `client`). If Netlify UI build settings override the file, set those three values exactly; do not use `client/dist` while the base is `client`.
-3. The `/api/*` redirect in the root `netlify.toml` proxies to Render. Replace `https://cyber-ec-lab-api.onrender.com` there if your Render service has a different hostname. No `VITE_API_URL` setting is needed with this same-origin proxy.
-4. Trigger a fresh deploy. In the deploy log, confirm Node 22, the Vite build completes, and the publish directory is `client/dist` in Netlify's absolute path display (configured as `dist` relative to the base). Then verify the site URL and `/api/health`.
+2. Use the committed root `netlify.toml` as the source of truth. It keeps Netlify's base directory at the repository root, runs `cd client && npm ci && npm run build`, and publishes `client/dist`.
+3. If existing Netlify UI settings override the file, clear the Base directory (leave it blank/root), set the build command to `cd client && npm ci && npm run build`, and set Publish directory to `client/dist`. Do not combine a `client` base directory with the `client/dist` publish path.
+4. The `/api/*` redirect in the root `netlify.toml` proxies to Render. Replace `https://cyber-ec-lab-api.onrender.com` there if your Render service has a different hostname. No `VITE_API_URL` setting is needed with this same-origin proxy.
+5. Trigger a fresh deploy. In the deploy log, confirm Node 22, the Vite build completes, and Netlify publishes `client/dist`. Then verify the site URL and `/api/health`.
 
 ## 4. Verify
 
