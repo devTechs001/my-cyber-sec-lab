@@ -1,11 +1,10 @@
 # Netlify configuration — MUST be at the repository root (Netlify does not read deploy/).
 # Deploy: Netlify UI -> "Add new site -> Import from Git" -> select this repo.
-# Base directory: client - Build command: npm run build - Publish directory: dist
+# Run from repo root; install/build in client; publish client/dist.
 
 [build]
-  base = "client"
-  command = "npm run build"
-  publish = "dist"
+  command = "cd client && npm ci && npm run build"
+  publish = "client/dist"
 
 [build.environment]
   NODE_VERSION = "22"
