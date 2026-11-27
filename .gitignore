@@ -7,3 +7,4 @@ __pycache__/
 *.pyc
 server/data/progress.json
 server/data/users.json
+.netlify/

@@ -8,9 +8,8 @@ const quickLinks = [
   { to: "/projects", icon: "rocket", title: "Projects", desc: "7 guided Blue Team and Red Team projects with practical deliverables" },
   { to: "/field-notes", icon: "book", title: "Field Notes", desc: "Save your own findings, lessons and practicals as you progress" },
   { to: "/soc-analyst", icon: "eye", title: "SOC Analyst Path", desc: "Work an incident from scope and alert triage through recovery and reporting" },
-  { to: "/terminal", icon: "terminal", title: "Lab Terminal", desc: "Simulated Kali shell — practice nmap & msfconsole in-browser" },
   { to: "/lab-setup", icon: "server", title: "Virtual Lab", desc: "Build a real isolated lab: Kali + Metasploitable + DVWA" },
-  { to: "/labs", icon: "flask", title: "Hands-on Labs", desc: "13 hands-on attack scenarios with steps, MITRE tags & deliverables" },
+  { to: "/labs", icon: "flask", title: "Hands-on Labs", desc: `${import.meta.env.DEV ? 13 : 12} hands-on scenarios with steps, MITRE tags & deliverables` },
   { to: "/lessons", icon: "book", title: "Lessons", desc: "17 modules from networking basics to full pentest reporting" },
   { to: "/tools", icon: "tools", title: "Tools", desc: "42 tools with commands and portfolio-ready assessment procedures" },
   { to: "/resources", icon: "link", title: "Resources", desc: "Official downloads, platforms, certs & bug bounty" },
@@ -106,6 +105,13 @@ export default function Dashboard() {
             <p>{q.desc}</p>
           </Link>
         ))}
+        {import.meta.env.DEV && (
+          <Link to="/terminal" className="card card-link pop">
+            <div className="card-icon"><Icon name="terminal" size={26} /></div>
+            <h3>Development Terminal</h3>
+            <p>Simulated Kali shell for local development only.</p>
+          </Link>
+        )}
       </div>
 
       {/* PROGRESS CHECKLISTS */}

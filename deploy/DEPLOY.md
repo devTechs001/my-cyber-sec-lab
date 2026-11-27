@@ -25,22 +25,21 @@ cd client && npm install && npm run dev        # http://localhost:5173 (proxies 
 ## 2. Deploy the API to Render
 
 1. Push this repo to GitHub (`git push`).
-2. Render dashboard → **New → Blueprint** → connect the repo → Render reads `deploy/render.yaml`.
-   - Or manual: **New → Web Service** → Root Directory `server`, Build `npm install`, Start `npm start`.
+2. Render dashboard → **New → Blueprint** → connect the repo → Render reads `deploy/render.yaml` (sets `NODE_ENV=production`).
+   - Or manual: **New → Web Service** → Root Directory `server`, Build `npm install`, Start `npm start`; set `NODE_ENV=production` in the service environment.
 3. Add env var `CLIENT_URL` = your Netlify URL (after step 3).
 4. Health check: `https://<service>.onrender.com/api/health` should return `{"status":"ok"}`.
 
 ## 3. Deploy the frontend to Netlify
 
-1. Netlify → **Add new site → Import an existing project** → pick the repo.
-2. Build settings: Base directory `client`, Build command `npm run build`, Publish directory `client/dist`
-   (or leave blank — `deploy/netlify.toml` at repo root is picked up automatically if base is set).
-3. Set environment variable `VITE_API_URL` if you prefer direct calls, or rely on the `/api/*`
-   redirect in `netlify.toml` (update the target URL to your Render service).
-4. Redeploy → your site is live at `https://<name>.netlify.app`.
+1. Netlify → **Add new site → Import an existing project** → pick the repository root.
+2. Use the committed root `netlify.toml` as the source of truth: base directory `client`, build command `npm run build`, publish directory `dist` (relative to `client`). If Netlify UI build settings override the file, set those three values exactly; do not use `client/dist` while the base is `client`.
+3. The `/api/*` redirect in the root `netlify.toml` proxies to Render. Replace `https://cyber-ec-lab-api.onrender.com` there if your Render service has a different hostname. No `VITE_API_URL` setting is needed with this same-origin proxy.
+4. Trigger a fresh deploy. In the deploy log, confirm Node 22, the Vite build completes, and the publish directory is `client/dist` in Netlify's absolute path display (configured as `dist` relative to the base). Then verify the site URL and `/api/health`.
 
 ## 4. Verify
 
 - Open the Netlify URL → hero shows `API status: ok`.
+- The simulated Kali terminal and its warm-up lab are development-only; production builds/API do not expose them.
 - `/lessons`, `/labs`, `/tools`, `/networking`, `/roadmap` all load data from the Render API.
 - `curl https://<render>.onrender.com/api/tools | head` returns JSON.

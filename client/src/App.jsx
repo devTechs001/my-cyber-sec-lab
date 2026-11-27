@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Sidebar from "./components/Sidebar.jsx";
@@ -14,13 +14,14 @@ import SocAnalyst from "./pages/SocAnalyst.jsx";
 import FieldNotes from "./pages/FieldNotes.jsx";
 import Networking from "./pages/Networking.jsx";
 import Roadmap from "./pages/Roadmap.jsx";
-import Terminal from "./pages/Terminal.jsx";
 import LabSetup from "./pages/LabSetup.jsx";
 import Resources from "./pages/Resources.jsx";
 import Cheatsheets from "./pages/Cheatsheets.jsx";
 import Login from "./pages/Login.jsx";
 import Projects from "./pages/Projects.jsx";
 import Reference from "./pages/Reference.jsx";
+
+const Terminal = import.meta.env.DEV ? lazy(() => import("./pages/Terminal.jsx")) : null;
 
 export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -44,7 +45,7 @@ export default function App() {
             <Route path="/field-notes" element={<FieldNotes />} />
             <Route path="/networking" element={<Networking />} />
             <Route path="/roadmap" element={<Roadmap />} />
-            <Route path="/terminal" element={<Terminal />} />
+            {import.meta.env.DEV && <Route path="/terminal" element={<Suspense fallback={<section className="section">Loading dev terminal…</section>}><Terminal /></Suspense>} />}
             <Route path="/lab-setup" element={<LabSetup />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/cheatsheets" element={<Cheatsheets />} />

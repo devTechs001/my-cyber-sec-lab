@@ -14,7 +14,7 @@ job-ready portfolio site deployable to **Netlify** (frontend) and **Render** (AP
 ```
 my-cyber-sec-lab/
 ├── client/                 # React (Vite) frontend — modern dark UI
-│   ├── src/pages/          # Home, Lessons, Labs, Terminal, LabSetup, Tools, Resources, Networking, Roadmap
+│   ├── src/pages/          # Home, Lessons, Labs, LabSetup, Tools, Resources, Networking, Roadmap (Terminal is dev-only)
 │   └── src/terminal/       # simulated Kali shell engine (in-browser, zero-risk practice)
 ├── server/                 # Express API (Node) — lessons/labs/tools/networking/roadmap/resources/labsetup/progress
 │   └── data/               # content as JSON modules
@@ -45,12 +45,12 @@ Open http://localhost:5173 — the hero shows live `API status: ok` from the bac
 
 ## 📊 Dashboard (`/dashboard`)
 Command center for the whole lab: stat cards (lesson/lab progress with % bars),
-"next up" lesson & lab, a one-click launch grid (Terminal, Virtual Lab, Labs, Lessons,
+"next up" lesson & lab, a one-click launch grid (SOC Analyst Path, Virtual Lab, Labs, Lessons,
 Tools, Resources, Networking, Roadmap), interactive checklists that persist server-side
 (`server/data/progress.json`, gitignored), and a recent-activity feed.
 
-## 🖥️ In-browser terminal (`/terminal`)
-Practice safely in a **simulated Kali shell** — nothing real executes:
+## 🖥️ Development-only terminal (`/terminal`)
+Available only in Vite development mode (`npm run dev`); it is omitted from production builds and production lab/API listings. Practice safely in its **simulated Kali shell** — nothing real executes:
 ```
 help → ls /lab → cat README.txt → ping 192.168.56.101 → nmap -sV 192.168.56.101
 → msfconsole → search vsftpd → use exploit/unix/ftp/vsftpd_234_backdoor
@@ -90,7 +90,7 @@ python3 log_analyzer.py auth.log.sample                # failed-login report
 | Part | Platform | Config | Steps |
 |---|---|---|---|
 | Frontend | **Netlify** | `netlify.toml` (repo root) | Import repo → base `client`, build `npm run build`, publish `dist` |
-| Backend API | **Render** | `deploy/render.yaml` | New Web Service → root `server`, start `npm start`; health: `/api/health` |
+| Backend API | **Render** | `deploy/render.yaml` | New Web Service → root `server`, start `npm start`, set `NODE_ENV=production`; health: `/api/health` |
 
 Full walkthrough: [`deploy/DEPLOY.md`](deploy/DEPLOY.md)
 

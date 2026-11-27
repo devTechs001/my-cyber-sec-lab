@@ -6,8 +6,7 @@ import Icon from "../components/Icon.jsx";
 
 const highlights = [
   { icon: "book", title: "17 Lessons", text: "Networking → web deep dive → SIEM/blue team → AD attacks → cloud → incident response." },
-  { icon: "flask", title: "13 Hands-on Labs", text: "Terminal warm-up, DVWA, Metasploitable, SIEM detection, AD chain, phishing triage, WiFi and more." },
-  { icon: "terminal", title: "Live Web Terminal", text: "Practice Linux + nmap + Metasploit syntax right in your browser — safe simulation." },
+  { icon: "flask", title: `${import.meta.env.DEV ? 13 : 12} Hands-on Labs`, text: "DVWA, Metasploitable, SIEM detection, AD chain, phishing triage, WiFi and more." },
   { icon: "server", title: "Virtual Lab Guide", text: "Kali attack box + vulnerable VMs (Metasploitable, DVWA) on an isolated host-only network." },
   { icon: "link", title: "Real Resources", text: "Official links: Kali, VulnHub, TryHackMe, HackTheBox, PortSwigger Academy, certs." },
   { icon: "tools", title: "42 Security Tools", text: "Real commands plus practical, evidence-led procedures for code, cloud, TLS, web and endpoint assessments." },
@@ -46,7 +45,7 @@ export default function Home() {
           <div className="hero-cta fade-up d3">
             <Link to="/dashboard" className="btn btn-primary"><Icon name="dashboard" size={16} /> Open Dashboard</Link>
             <Link to="/lessons" className="btn btn-ghost"><Icon name="book" size={16} /> Start Lesson 1 →</Link>
-            <Link to="/terminal" className="btn btn-ghost"><Icon name="terminal" size={16} /> Lab Terminal</Link>
+            {import.meta.env.DEV && <Link to="/terminal" className="btn btn-ghost"><Icon name="terminal" size={16} /> Dev Terminal</Link>}
             <Link to="/lab-setup" className="btn btn-ghost"><Icon name="server" size={16} /> Virtual Lab</Link>
           </div>
           <div className="hero-status fade-up d4">
@@ -71,6 +70,13 @@ export default function Home() {
               <p>{h.text}</p>
             </div>
           ))}
+          {import.meta.env.DEV && (
+            <div className="card" key="dev-terminal">
+              <div className="card-icon"><Icon name="terminal" size={26} /></div>
+              <h3>Development Terminal</h3>
+              <p>Simulated command practice, enabled only on development builds.</p>
+            </div>
+          )}
         </div>
       </section>
 
