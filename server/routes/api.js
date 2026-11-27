@@ -18,6 +18,9 @@ import { register, login, logout, authMiddleware } from "../auth.js";
 const router = Router();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROGRESS_FILE = path.join(__dirname, "..", "data", "progress.json");
+const IS_PRODUCTION = process.env.NODE_ENV === "production";
+const DEV_ONLY_LAB_IDS = new Set(["lab-08-terminal-warmup"]);
+const visibleLabs = IS_PRODUCTION ? labs.filter((lab) => !DEV_ONLY_LAB_IDS.has(lab.id)) : labs;
 
 // ---- per-user (or guest) progress, persisted to disk ----
 function loadProgress() {
@@ -85,7 +88,7 @@ const LAB_MITRE = {
 // ---- global search across all content ----
 const SEARCH_INDEX = [
   ...lessons.map((l) => ({ type: "lesson", id: l.id, title: `${l.order}. ${l.title}`, text: l.summary + " " + l.objectives.join(" "), url: `/lessons/${l.id}` })),
-  ...labs.map((l) => ({ type: "lab", id: l.id, title: l.title, text: l.objective + " " + l.tools.join(" "), url: `/labs/${l.id}` })),
+  ...visibleLabs.map((l) => ({ type: "lab", id: l.id, title: l.title, text: l.objective + " " + l.tools.join(" "), url: `/labs/${l.id}` })),
   ...tools.map((t) => ({ type: "tool", id: t.name, title: t.name, text: t.category + " " + t.description, url: "/tools" })),
   ...projects.map((p) => ({ type: "project", id: p.id, title: p.title, text: p.role + " " + p.summary, url: "/projects" })),
   ...cheatsheets.map((c) => ({ type: "cheatsheet", id: c.id, title: c.title, text: c.sections.map((s) => s.commands.join(" ")).join(" "), url: "/cheatsheets" })),
@@ -104,10 +107,10 @@ router.get("/search", (req, res) => {
 });
 
 router.get("/labs", (_req, res) =>
-  res.json({ count: labs.length, labs: labs.map((l) => ({ ...l, mitre: LAB_MITRE[l.id] || null })) })
+  res.json({ count: visibleLabs.length, labs: visibleLabs.map((l) => ({ ...l, mitre: LAB_MITRE[l.id] || null })) })
 );
 router.get("/labs/:id", (req, res) => {
-  const lab = labs.find((l) => l.id === req.params.id);
+  const lab = visibleLabs.find((l) => l.id === req.params.id);
   if (!lab) return res.status(404).json({ error: "lab not found" });
   res.json({ ...lab, mitre: LAB_MITRE[lab.id] || null });
 });
@@ -164,9 +167,10 @@ router.get("/roadmap", (_req, res) => {
 // ---- progress (per account; guests share the "guest" bucket) ----
 router.get("/progress", (req, res) => {
   const bucket = progress[bucketFor(req)] || {};
-  res.json({ user: req.user?.username || null, progress: Object.entries(bucket).map(([id, v]) => ({ id, ...v })) });
+  res.json({ user: req.user?.username || null, progress: Object.entries(bucket).filter(([id]) => !IS_PRODUCTION || !DEV_ONLY_LAB_IDS.has(id)).map(([id, v]) => ({ id, ...v })) });
 });
 router.post("/progress/:id", (req, res) => {
+  if (IS_PRODUCTION && DEV_ONLY_LAB_IDS.has(req.params.id)) return res.status(404).json({ error: "lab not found" });
   const key = bucketFor(req);
   if (!progress[key]) progress[key] = {};
   const done = !!req.body?.done;
@@ -182,7 +186,7 @@ router.get("/dashboard", (req, res) => {
     id: l.id, order: l.order, title: l.title, icon: l.icon, level: l.level,
     done: !!bucket[l.id]?.done, at: bucket[l.id]?.at || null,
   }));
-  const labProgress = labs.map((l) => ({
+  const labProgress = visibleLabs.map((l) => ({
     id: l.id, title: l.title, difficulty: l.difficulty,
     done: !!bucket[l.id]?.done, at: bucket[l.id]?.at || null,
   }));
@@ -192,15 +196,16 @@ router.get("/dashboard", (req, res) => {
     user: req.user?.username || null,
     stats: {
       lessons: lessons.length, lessonsDone: doneLessons,
-      labs: labs.length, labsDone: doneLabs,
+      labs: visibleLabs.length, labsDone: doneLabs,
       tools: tools.length, resourceLinks: resources.reduce((n, c) => n + c.items.length, 0),
       lessonPercent: Math.round((doneLessons / lessons.length) * 100),
-      labPercent: Math.round((doneLabs / labs.length) * 100),
+      labPercent: Math.round((doneLabs / visibleLabs.length) * 100),
     },
     lessonProgress, labProgress,
     nextLesson: lessonProgress.find((l) => !l.done) || null,
     nextLab: labProgress.find((l) => !l.done) || null,
     activity: Object.entries(bucket)
+      .filter(([id]) => !IS_PRODUCTION || !DEV_ONLY_LAB_IDS.has(id))
       .map(([id, v]) => ({ id, done: v.done, at: v.at }))
       .sort((a, b) => (b.at || "").localeCompare(a.at || ""))
       .slice(0, 8),

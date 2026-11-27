@@ -7,6 +7,7 @@ export default defineConfig({
   server: {
     host: "0.0.0.0",
     port: 5173,
+    allowedHosts: [".e2b.app"],
     proxy: {
       "/api": {
         target: process.env.VITE_API_URL || "http://localhost:5000",
@@ -17,6 +18,7 @@ export default defineConfig({
   preview: {
     host: "0.0.0.0",
     port: 4173,
+    allowedHosts: [".e2b.app"],
     proxy: {
       "/api": {
         target: process.env.VITE_API_URL || "http://localhost:5000",

@@ -23,7 +23,7 @@ const groups = [
   {
     title: "Practice",
     links: [
-      { to: "/terminal", label: "Terminal", icon: "terminal" },
+      ...(import.meta.env.DEV ? [{ to: "/terminal", label: "Terminal", icon: "terminal" }] : []),
       { to: "/lab-setup", label: "Virtual Lab", icon: "server" },
     ],
   },

@@ -7,6 +7,9 @@
   command = "npm run build"
   publish = "dist"
 
+[build.environment]
+  NODE_VERSION = "22"
+
 # Proxy API calls to the Render backend so the site works on one domain.
 # Replace the host with your actual Render service URL.
 [[redirects]]
